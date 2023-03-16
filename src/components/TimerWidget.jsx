@@ -1,6 +1,7 @@
 import { Card, Button} from 'react-bootstrap'
 import { useEffect, useState } from 'react'
 import { Howl } from 'howler'
+import { FiClock } from 'react-icons/fi';
 
 import timerMP3 from '../media/timer-sound.mp3'
 
@@ -42,7 +43,7 @@ const TimerWidget = () => {
         <div>
         <Card className="bg-dark" style={{ width: '18rem' }}>
       <Card.Body>
-        <Card.Title className="text-light">Pomodoro Timer</Card.Title>
+        <Card.Title className="text-light"><FiClock className="mb-2" /> <br />Pomodoro Timer</Card.Title>
         <Card.Text className="text-light">
           {`${Math.floor(time / 60) < 10 ? `0${Math.floor(time / 60)}` : `${Math.floor(time / 60)}`
         }:${time % 60 < 10 ? `0${time % 60}` : time % 60}`}
