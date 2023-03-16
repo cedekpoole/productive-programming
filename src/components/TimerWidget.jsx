@@ -1,6 +1,12 @@
 import { Card, Button} from 'react-bootstrap'
 import { useEffect, useState } from 'react'
+import { Howl } from 'howler'
 
+import timerMP3 from '../media/timer-sound.mp3'
+
+let timerSound = new Howl({
+  src: [ timerMP3 ],
+})
 
 const TimerWidget = () => {
 
@@ -24,6 +30,7 @@ const TimerWidget = () => {
           setTime(time - 1)
         } else if (time === 0) {
           clearInterval(i);
+          timerSound.play()
         }
       }
     }, 1000);
@@ -33,10 +40,10 @@ const TimerWidget = () => {
 
     return (
         <div>
-        <Card style={{ width: '18rem' }}>
+        <Card className="bg-dark" style={{ width: '18rem' }}>
       <Card.Body>
-        <Card.Title>Pomodoro Timer</Card.Title>
-        <Card.Text>
+        <Card.Title className="text-light">Pomodoro Timer</Card.Title>
+        <Card.Text className="text-light">
           {`${Math.floor(time / 60) < 10 ? `0${Math.floor(time / 60)}` : `${Math.floor(time / 60)}`
         }:${time % 60 < 10 ? `0${time % 60}` : time % 60}`}
         </Card.Text>
