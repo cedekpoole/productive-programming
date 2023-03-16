@@ -44,13 +44,13 @@ const TimerWidget = () => {
 
   return (
     <div>
-      <Card className="bg-dark" style={{ width: "18rem" }}>
+      <Card className="bg-dark text-light" style={{ width: "18rem" }}>
         <Card.Body>
-          <Card.Title className="text-light">
+          <Card.Title>
             <FiClock className="mb-2" /> <br />
             Pomodoro Timer
           </Card.Title>
-          <Card.Text className="text-light">
+          <Card.Text>
             {`${
               Math.floor(time / 60) < 10
                 ? `0${Math.floor(time / 60)}`
