@@ -1,53 +1,62 @@
-import { Card, Col, Row } from 'react-bootstrap'
+import { Card, Col, Row, Spinner } from 'react-bootstrap'
 import { IoLocationSharp } from 'react-icons/io5';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { format, fromUnixTime } from 'date-fns'
 
 const WeatherWidget = () => {
+  const [city, setCity] = useState();
   const [weatherData, setWeatherData] = useState();
   const [forecastData, setForecastData] = useState();
-  const [city, setCity] = useState();
+  const [apiFailCounter, setAPIFailCounter] = useState(0);
+
+  const apiCallFail = () => {
+    setTimeout(() => {
+      setAPIFailCounter(apiFailCounter + 1);
+    }, 1000);
+  };
 
   useEffect(() => {
-    // Get user's city from ipapi.co
-    axios.get('https://ipapi.co/json/')
-      .then(response => {
-        setCity(response.data.city);
-        return response.data.city;
-      })
-      .then(city => {
-        // Fetch weather data and forecast using OpenWeatherMap API
-        const apiKey = 'a32c896a5efe5c837799909bac3a9141';
-        const urlWeather = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-        const urlForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+    if (apiFailCounter < 3) {
+      // Get user's city from ipapi.co
+      axios.get('https://ipapi.co/json/')
+        .then(response => {
+          setCity(response.data.city);
+          return response.data.city;
+        })
+        .then(city => {
+          // Fetch weather data and forecast using OpenWeatherMap API
+          const apiKey = 'a32c896a5efe5c837799909bac3a9141';
+          const urlWeather = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+          const urlForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
 
-        return Promise.all([
-          axios.get(urlWeather),
-          axios.get(urlForecast)
-        ]);
-      })
-      .then(([weatherResponse, forecastResponse]) => {
-        if (weatherResponse.data && weatherResponse.data.main) {
-          setWeatherData(weatherResponse.data);
-          console.log(weatherResponse.data);
-        } else {
-          console.log('Weather data is undefined or missing properties.');
-        }
+          return Promise.all([
+            axios.get(urlWeather),
+            axios.get(urlForecast)
+          ]);
+        })
+        .then(([weatherResponse, forecastResponse]) => {
+          if (weatherResponse.data && weatherResponse.data.main) {
+            setWeatherData(weatherResponse.data);
+          } else {
+            console.log('Weather data is undefined or missing properties.');
+          }
 
-        if (forecastResponse.data && forecastResponse.data.list) {
-          setForecastData(forecastResponse.data);
-          console.log(forecastResponse.data);
-        } else {
-          console.log('Forecast data is undefined or missing properties.');
-        }
-      })
-      .catch(error => console.log(error));
-  }, []);
+          if (forecastResponse.data && forecastResponse.data.list) {
+            setForecastData(forecastResponse.data);
+          } else {
+            console.log('Forecast data is undefined or missing properties.');
+          }
+        })
+        .catch(error => {
+          apiCallFail(error);
+        });
+    }
+  }, [apiFailCounter]);
 
   function generateTodayForecast() {
-    const city =  weatherData.name;
-    const countryCode =  weatherData.sys.country;
+    const city = weatherData.name;
+    const countryCode = weatherData.sys.country;
     const temperature = weatherData.main.temp.toFixed(0);
     const iconURL = (`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`);
 
@@ -58,7 +67,7 @@ const WeatherWidget = () => {
           {`${city}, ${countryCode}`}&nbsp;<IoLocationSharp />
         </Col>
         <Col xs="6" style={{ fontSize: '4rem' }}>
-          {`${temperature}°`}
+          {`${temperature}°c`}
         </Col>
       </Row>
     );
@@ -80,21 +89,55 @@ const WeatherWidget = () => {
         </Col>
       )
     });
-    return forecastArray;
+    
+    return (
+      <Row>
+        {forecastArray}
+      </Row>
+    );
   };
 
+  function displayError() {
+    return (
+      <Col className='p-4'>
+        Whoops!<br />
+        We were unable to fetch your current weather.
+      </Col>
+    )
+  };
+
+  function displaySpinner() {
+    return (
+      <Col className='p-4'>
+        <Spinner animation="border" size='xl' style={{ width: '5rem', height: '5rem' }} />
+      </Col>
+    )
+  };
+
+  function loadContent() {
+    if (apiFailCounter >= 3) {
+      return displayError();
+    }
+    else {
+      return displaySpinner();
+    }
+  };
+
+  function generateWeather() {
+    return (
+      <div>
+        {generateTodayForecast()}
+        {generate5DayForecast()}
+      </div>
+    )
+  };
 
   return (
     <div>
       <Card style={{ width: '19rem' }} bg="dark" text='light'>
         <Card.Body>
           <Card.Title>Weather Widget</Card.Title>
-          <Row style={{ height: '75%' }}>
-            {weatherData && weatherData.main ? generateTodayForecast() : ''}
-          </Row>
-          <Row>
-            {weatherData && weatherData.main ? generate5DayForecast() : ''}
-          </Row>
+          {weatherData && weatherData.main ? generateWeather() : loadContent()}
         </Card.Body>
       </Card>
     </div>
