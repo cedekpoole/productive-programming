@@ -1,4 +1,4 @@
-import { Card, Button, Col, Row } from 'react-bootstrap'
+import { Card, Col, Row } from 'react-bootstrap'
 import { IoLocationSharp } from 'react-icons/io5';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -6,8 +6,8 @@ import { format, fromUnixTime } from 'date-fns'
 
 const WeatherWidget = () => {
   const [weatherData, setWeatherData] = useState();
-  const [city, setCity] = useState();
   const [forecastData, setForecastData] = useState();
+  const [city, setCity] = useState();
 
   useEffect(() => {
     // Get user's city from ipapi.co
@@ -45,28 +45,44 @@ const WeatherWidget = () => {
       .catch(error => console.log(error));
   }, []);
 
+  function generateTodayForecast() {
+    const city =  weatherData.name;
+    const countryCode =  weatherData.sys.country;
+    const temperature = weatherData.main.temp.toFixed(0);
+    const iconURL = (`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`);
+
+    return (
+      <Row>
+        <Col xs="6">
+          <img src={iconURL} /><br />
+          {`${city}, ${countryCode}`}&nbsp;<IoLocationSharp />
+        </Col>
+        <Col xs="6" style={{ fontSize: '4rem' }}>
+          {`${temperature}°`}
+        </Col>
+      </Row>
+    );
+  };
+
   function generate5DayForecast() {
+    const dateIndex = [4, 12, 20, 28, 36];
+    const forecastArray = dateIndex.map((dateIndex, i) => {
 
-    var forecastArray = [];
-    var objectElement = 4;
+      const day = format(fromUnixTime(forecastData.list[dateIndex].dt), "EEE");
+      const temperature = forecastData.list[dateIndex].main.temp;
+      const iconURL = (`http://openweathermap.org/img/wn/${forecastData.list[dateIndex].weather[0].icon}.png`);
 
-    for (var i = 0; i < 5; i++) {
-      var dataSet = {
-        dateTime: forecastData.list[objectElement].dt,
-        temperature: forecastData.list[objectElement].main.temp,
-        iconURL: (`http://openweathermap.org/img/wn/${forecastData.list[objectElement].weather[0].icon}.png`)
-      };
-      const time = format(fromUnixTime(dataSet.dateTime), "EEE");
-      console.log(time);
-      const forecast = <Col key={i}> {time}<br />
-        <img src={dataSet.iconURL} style={{ width: '2rem' }} /><br />
-        {dataSet.temperature.toFixed(0)} °</Col>;
-
-      forecastArray.push(forecast);
-      objectElement += 8;
-    }
+      return (
+        <Col key={i}>
+          {day}<br />
+          <img src={iconURL} style={{ width: '2rem' }} /><br />
+          {temperature.toFixed(0)} °
+        </Col>
+      )
+    });
     return forecastArray;
-  }
+  };
+
 
   return (
     <div>
@@ -74,10 +90,7 @@ const WeatherWidget = () => {
         <Card.Body>
           <Card.Title>Weather Widget</Card.Title>
           <Row style={{ height: '75%' }}>
-            <Col xs="6">{weatherData && weatherData.main ? <img src={`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`} /> : ''}<br />
-              {city}&nbsp;<IoLocationSharp />
-            </Col>
-            <Col xs="6" style={{ fontSize: '4rem' }}>{weatherData && weatherData.main ? `${weatherData.main.temp.toFixed(0)}°` : ''}</Col>
+            {weatherData && weatherData.main ? generateTodayForecast() : ''}
           </Row>
           <Row>
             {weatherData && weatherData.main ? generate5DayForecast() : ''}
@@ -85,7 +98,6 @@ const WeatherWidget = () => {
         </Card.Body>
       </Card>
     </div>
-
   );
 };
 
