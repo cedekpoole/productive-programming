@@ -1,6 +1,6 @@
 import NewsWidget from '../components/NewsWidget'
 import NotesWidget from '../components/NotesWidget'
-import StackOverflowWidget from '../components/StackOverflowWidget'
+import StackOverflowWidget from '../components/StackOverflowWidget/StackOverflowWidget'
 import TimerWidget from '../components/TimerWidget'
 import WeatherWidget from '../components/WeatherWidget'
 import { Container, Row, Col } from 'react-bootstrap'
