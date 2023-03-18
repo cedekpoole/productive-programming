@@ -47,7 +47,7 @@ const StackOverflowWidget = () => {
         handleFormSubmit={handleFormSubmit}
         handleKeyDown={handleKeyDown}
       />
-      <div style={{height: "250px", overflowY: "scroll"}}>
+      <div style={{height: "220px", overflowY: "scroll"}}>
         {data.map((element, index) => (
           <StackOverflowCard
             num={index + 1}

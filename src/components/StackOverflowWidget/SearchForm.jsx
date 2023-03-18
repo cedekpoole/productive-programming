@@ -1,9 +1,10 @@
 import { Form, Button } from "react-bootstrap";
+import { ImStackoverflow } from "react-icons/im"
 
 function SearchForm(props) {
   return (
     <Form>
-      <label htmlFor="search">Search:</label>
+      <label className="display-6 mb-2"><ImStackoverflow /></label>
       <div className="input-group">
         <input
           onChange={props.handleInputChange}
@@ -15,7 +16,7 @@ function SearchForm(props) {
           placeholder="Search StackOverflow"
           id="search"
         />
-        <Button onClick={props.handleFormSubmit} className="btn btn-primary">
+        <Button onClick={props.handleFormSubmit} className="btn btn-dark">
           Search
         </Button>
       </div>
