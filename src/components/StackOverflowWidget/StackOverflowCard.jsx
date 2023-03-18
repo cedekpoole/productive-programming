@@ -1,12 +1,14 @@
+import { Card, ListGroup } from 'react-bootstrap'
 
 function StackOverflowCard(props) {
     return (
-      <div className="text-center">
-        <img alt={props.title} className="img-fluid" src={props.src} style={{ margin: "0 auto" }} />
-        <h3>Title(s): {props.title}</h3>
-        <h3>Genre: {props.genre}</h3>
-        <h3>Released: {props.released}</h3>
-      </div>
+      <Card>
+        <ListGroup>
+            <ListGroup.Item>{props.num}</ListGroup.Item>
+            <ListGroup.Item>{props.title}</ListGroup.Item>
+            <ListGroup.Item>{props.answered ? "ANSWERED" : "NOT ANSWERED"}</ListGroup.Item>
+        </ListGroup>
+      </Card>
     );
   }
   

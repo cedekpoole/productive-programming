@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 
 const StackOverflowWidget = () => {
   const [search, setSearch] = useState("");
-  const [data, setData] = useState({});
+  const [data, setData] = useState([]);
   const [searchToExecute, setSearchToExecute] = useState("javascript");
 
   useEffect(() => {
@@ -14,7 +14,10 @@ const StackOverflowWidget = () => {
       .get(
         `https://api.stackexchange.com/2.3/search/advanced?order=desc&sort=relevance&q=${searchToExecute}&site=stackoverflow`
       )
-      .then((res) => setData(res.data))
+      .then((res) => {
+        setData(res.data.items)
+        console.log(data)
+      })
       .catch((err) => console.log(err))
     }, [searchToExecute]);
 
@@ -47,7 +50,13 @@ const StackOverflowWidget = () => {
       handleInputChange={handleInputChange}
       handleFormSubmit={handleFormSubmit}
        />
-       
+      {data.map((element, index) => (
+        <StackOverflowCard 
+        num={index + 1}
+        title={element.title}
+        answered={element.is_answered}
+        />
+      ))}
     </div>
   );
 };
