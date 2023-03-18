@@ -47,14 +47,17 @@ const StackOverflowWidget = () => {
         handleFormSubmit={handleFormSubmit}
         handleKeyDown={handleKeyDown}
       />
-      {data.map((element, index) => (
-        <StackOverflowCard
-          num={index + 1}
-          title={element.title}
-          answered={element.is_answered}
-          key={index}
-        />
-      ))}
+      <div style={{height: "250px", overflowY: "scroll"}}>
+        {data.map((element, index) => (
+          <StackOverflowCard
+            num={index + 1}
+            title={element.title}
+            answered={element.is_answered}
+            link={element.link}
+            key={index}
+          />
+        ))}
+      </div>
     </div>
   );
 };
