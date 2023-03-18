@@ -36,12 +36,12 @@ const Study = () => {
             <Card className="mt-4 bg-dark text-light">
               <Card.Body>
                 <Card.Title className="mb-0">Music to Focus</Card.Title>
-                <Card.Text style={{ fontSize: "2rem" }} onClick={toggleMusic}>
-                  {playMusic ? (
+                <Card.Text style={{ fontSize: "2rem" }}>
+                  <span onClick={toggleMusic}>{playMusic ? (
                     <BsPauseCircleFill role="button" />
                   ) : (
                     <BsFillPlayCircleFill role="button" />
-                  )}
+                  )}</span>
                 </Card.Text>
               </Card.Body>
             </Card>
