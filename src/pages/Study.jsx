@@ -1,5 +1,5 @@
 import Timer from "../components/TimerWidget";
-import axios from "axios";
+import Astronomy from "../components/AstronomyAPI"
 import { useState, useEffect } from "react";
 import { GrLounge } from "react-icons/gr";
 import { BsFillPlayCircleFill } from "react-icons/bs";
@@ -14,33 +14,15 @@ const studyMusic = new Howl({
 });
 
 const Study = () => {
-  const [data, setData] = useState([]);
   const [playMusic, setPlayMusic] = useState(false);
-
-  useEffect(() => {
-    axios
-      .get(
-        "https://api.nasa.gov/planetary/apod?api_key=AJ6cjvyNYD3HWl9hXYRk9MGUb0mSJLNDhf694BWj"
-      )
-      .then((response) => {
-        setData(response.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
 
   const toggleMusic = () => setPlayMusic(!playMusic);
 
-  if (playMusic) {
-    studyMusic.play();
-  } else {
-    studyMusic.pause();
-  }
+  playMusic ? studyMusic.play() : studyMusic.pause();
 
   return (
     <div>
-      <h1 className="display-1 text-center mb-4">
+      <h1 className="display-1 text-light text-center mb-4">
         Study Lounge <GrLounge />
       </h1>
       <Container fluid>
@@ -48,10 +30,10 @@ const Study = () => {
           <Col
             xs={12}
             md={3}
-            className="d-flex  align-items-center flex-column mb-2"
+            className="d-flex align-items-center flex-column mb-2"
           >
             <Timer />
-            <Card className="mt-4 bg-dark text-light">
+            <Card className="mt-4 bg-dark text-light text-center">
               <Card.Body>
                 <Card.Title className="mb-0">Music to Focus</Card.Title>
                 <Card.Text style={{ fontSize: "2rem" }} onClick={toggleMusic}>
@@ -65,22 +47,7 @@ const Study = () => {
             </Card>
           </Col>
           <Col xs={12} md={9} className="d-flex justify-content-center">
-            <Card className="h-100" style={{ width: "80%" }}>
-              <div>
-                <Card.Img
-                  variant="top"
-                  src={data.hdurl}
-                  alt=""
-                  className="img-fluid"
-                />
-                <Card.Body>
-                  <Card.Title>Astronomy Picture of the day</Card.Title>
-                  <Card.Text style={{ fontSize: "16px" }}>
-                    {data.explanation}
-                  </Card.Text>
-                </Card.Body>
-              </div>
-            </Card>
+            <Astronomy />
           </Col>
         </Row>
       </Container>
