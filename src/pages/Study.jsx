@@ -21,8 +21,8 @@ const Study = () => {
   playMusic ? studyMusic.play() : studyMusic.pause();
 
   return (
-    <div>
-      <h1 className="display-1 text-light text-center mb-4">
+    <div className="text-center">
+      <h1 className="display-1 text-light mb-4">
         Study Lounge <GrLounge />
       </h1>
       <Container fluid>
@@ -33,7 +33,7 @@ const Study = () => {
             className="d-flex align-items-center flex-column mb-2"
           >
             <Timer />
-            <Card className="mt-4 bg-dark text-light text-center">
+            <Card className="mt-4 bg-dark text-light">
               <Card.Body>
                 <Card.Title className="mb-0">Music to Focus</Card.Title>
                 <Card.Text style={{ fontSize: "2rem" }} onClick={toggleMusic}>
