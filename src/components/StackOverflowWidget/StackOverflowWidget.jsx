@@ -32,29 +32,27 @@ const StackOverflowWidget = () => {
     event.preventDefault();
     setSearchToExecute(search);
   }
+
+  const handleKeyDown = event => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      setSearchToExecute(search)
+    }
+  }
   return (
     <div>
-      {/* <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
-      <Card.Body>
-        <Card.Title>Stack Overflow Widget</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
-      </Card.Body>
-    </Card> */}
       <SearchForm
       value={search}
       handleInputChange={handleInputChange}
       handleFormSubmit={handleFormSubmit}
+      handleKeyDown={handleKeyDown}
        />
       {data.map((element, index) => (
         <StackOverflowCard 
         num={index + 1}
         title={element.title}
         answered={element.is_answered}
+        key={index}
         />
       ))}
     </div>

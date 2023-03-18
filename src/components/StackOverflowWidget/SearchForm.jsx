@@ -7,6 +7,7 @@ function SearchForm(props) {
         <div className="input-group">
           <input
             onChange={props.handleInputChange}
+            onKeyDown={props.handleKeyDown}
             value={props.value}
             name="search"
             type="text"
