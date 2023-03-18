@@ -1,5 +1,5 @@
 import NewsWidget from '../components/NewsWidget'
-import NotesWidget from '../components/NotesWidget'
+import CreateNote from '../components/NoteComponents/CreateNote'
 import StackOverflowWidget from '../components/StackOverflowWidget'
 import TimerWidget from '../components/TimerWidget'
 import WeatherWidget from '../components/WeatherWidget'
@@ -23,7 +23,7 @@ function Home() {
                     </Row>
                 </Col>
                 <Col>
-                <NotesWidget />
+                <CreateNote />
                 </Col>
                 </Row>
                 <Row>
