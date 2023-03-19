@@ -14,11 +14,11 @@ function SearchForm(props) {
           value={props.value}
           name="search"
           type="text"
-          className="form-control"
+          className="form-control bg-dark"
           placeholder="Search StackOverflow"
           id="search"
         />
-        <Button onClick={props.handleFormSubmit} className="btn btn-dark">
+        <Button onClick={props.handleFormSubmit} className="btn border btn-dark">
           Search
         </Button>
       </div>
