@@ -4,6 +4,7 @@ import "../components/NoteComponents/Notes.css";
 import Note from "../components/NoteComponents/Note";
 import NotesCreateNote from "../components/NoteComponents/NotesCreateNote";
 import NotesHeader from "../components/NoteComponents/NotesHeader";
+import SearchNotes from "../components/NoteComponents/SearchNotes";
 import { v4 as uuid } from "uuid";
 
 
@@ -48,6 +49,7 @@ function Notes() {
     return (
         <div className="notes">
             <NotesHeader />
+            <SearchNotes />
             <div className="notes__content">
                 {notes.map((note) => (
                     <Note
