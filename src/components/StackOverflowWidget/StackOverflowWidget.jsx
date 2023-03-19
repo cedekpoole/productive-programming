@@ -16,7 +16,6 @@ const StackOverflowWidget = () => {
       )
       .then((res) => {
         setData(res.data.items);
-        console.log(data);
       })
       .catch((err) => console.log(err));
   }, [searchToExecute]);
@@ -27,8 +26,6 @@ const StackOverflowWidget = () => {
   };
 
   const handleFormSubmit = (event) => {
-    // TODO: prevent the page from reloading
-    // TODO: call the function to look up the movie
     event.preventDefault();
     setSearchToExecute(search);
   };
