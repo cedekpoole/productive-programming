@@ -2,6 +2,7 @@ import StackOverflowWidget from '../components/StackOverflowWidget/StackOverflow
 import StackCard from '../components/StackOverflowWidget/StackOverflowCard'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import { Container } from 'react-bootstrap'
 
 const StackOverflow = () => {
     // Get date for the last day to use in API call
@@ -20,21 +21,25 @@ const StackOverflow = () => {
     }, [])
     
     return (
-        <div>
+        <Container>
             <StackOverflowWidget />
-            <h3 className="mt-3 text-center">Hot React.js Questions</h3>
-            <div style={{height: "220px", overflowY: "scroll"}}>
+            <h3 className="mt-5 mb-4">Hot React.js Questions</h3>
+            <div style={{height: "270px", overflowY: "scroll"}}>
                 {data.map((element, index) => (
                     <StackCard
-                        num={index + 1}
+                        votes={element.score}
                         title={element.title}
-                        answered={element.is_answered}
+                        answers={element.answer_count}
                         link={element.link}
                         key={index}
+                        views={element.view_count}
+                        tags={element.tags}
+                        user={element.owner.display_name}
+                        image={element.owner.profile_image}
                     />
                 ))}
             </div>
-        </div>
+        </Container>
     )
 }
 
