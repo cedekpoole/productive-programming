@@ -1,6 +1,7 @@
 import { React, useState, useEffect, useRef } from "react";
 import "../components/NoteComponents/Note.css";
 import Note from "../components/NoteComponents/Note"
+import NotesCreateNote from "../components/NoteComponents/NotesCreateNote";
 // import CreateNote from "../components/NoteComponents/CreateNote";
 import { v4 as uuid } from "uuid";
 
@@ -10,25 +11,25 @@ function Notes() {
     const [notes, setNotes] = useState([]);
     const [inputText, setInputText] = useState("");
 
-    // // get text and store in state
-    // const textHandler = (e) => {
-    //     setInputText(e.target.value);
-    // };
+    // get text and store in state
+    const textHandler = (e) => {
+        setInputText(e.target.value);
+    };
 
-    // const saveHandler = () => {
-    //     const newNote = {
-    //       id: uuid(),
-    //       text: inputText,
-    //     };
+    const notesSaveHandler = () => {
+        const newNote = {
+          id: uuid(),
+          text: inputText,
+        };
       
-    //     // Store the newly created note in the local storage
-    //     const storedNotes = JSON.parse(localStorage.getItem("notes")) || [];
-    //     const updatedNotes = [...storedNotes, newNote];
-    //     localStorage.setItem("notes", JSON.stringify(updatedNotes));
+        // Store the newly created note in the local storage
+        const storedNotes = JSON.parse(localStorage.getItem("notes")) || [];
+        const updatedNotes = [...storedNotes, newNote];
+        localStorage.setItem("notes", JSON.stringify(updatedNotes));
       
-    //     setNotes(updatedNotes);
-    //     setInputText("");
-    //   };
+        setNotes(updatedNotes);
+        setInputText("");
+      };
       
 
     //delete note function
@@ -53,11 +54,11 @@ function Notes() {
                     deleteNote={deleteNote}
                 />
             ))}
-            {/* <CreateNote
+            <NotesCreateNote
                 textHandler={textHandler}
-                saveHandler={saveHandler}
+                notesSaveHandler={notesSaveHandler}
                 inputText={inputText}
-            /> */}
+            />
         </div>
     );
 }
