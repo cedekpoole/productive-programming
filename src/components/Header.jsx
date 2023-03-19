@@ -8,7 +8,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 
 function Header () {
     return (
-        <Navbar id="mainNavbar" expand="lg" className="navbar-dark pb-1 fixed-top mb-5">
+        <Navbar id="mainNavbar" expand="lg" className="navbar-dark pb-1 fixed-top mb-5" collapseOnSelect>
           <Navbar.Brand className="mx-3">Productive Programming</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
