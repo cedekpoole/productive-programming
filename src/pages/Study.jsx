@@ -29,7 +29,7 @@ const Study = () => {
         <Row>
           <Col
             xs={12}
-            md={3}
+            md={5}
             className="d-flex align-items-center flex-column mb-2"
           >
             <Timer />
@@ -46,7 +46,7 @@ const Study = () => {
               </Card.Body>
             </Card>
           </Col>
-          <Col xs={12} md={9} className="d-flex justify-content-center">
+          <Col xs={12} md={7} className="d-flex justify-content-center">
             <Astronomy />
           </Col>
         </Row>
