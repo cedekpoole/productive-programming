@@ -44,7 +44,7 @@ const StackOverflowWidget = () => {
         handleFormSubmit={handleFormSubmit}
         handleKeyDown={handleKeyDown}
       />
-      <div style={{ height: "220px", overflowY: "scroll" }}>
+      <div className="mt-1" style={{ height: "220px", overflowY: "scroll" }}>
         {data.map((element, index) => (
           <StackOverflowCard
             votes={element.score}
