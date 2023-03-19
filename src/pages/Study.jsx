@@ -29,24 +29,24 @@ const Study = () => {
         <Row>
           <Col
             xs={12}
-            md={3}
+            md={5}
             className="d-flex align-items-center flex-column mb-2"
           >
             <Timer />
             <Card className="mt-4 bg-dark text-light">
               <Card.Body>
                 <Card.Title className="mb-0">Music to Focus</Card.Title>
-                <Card.Text style={{ fontSize: "2rem" }} onClick={toggleMusic}>
-                  {playMusic ? (
+                <Card.Text style={{ fontSize: "2rem" }}>
+                  <span onClick={toggleMusic}>{playMusic ? (
                     <BsPauseCircleFill role="button" />
                   ) : (
                     <BsFillPlayCircleFill role="button" />
-                  )}
+                  )}</span>
                 </Card.Text>
               </Card.Body>
             </Card>
           </Col>
-          <Col xs={12} md={9} className="d-flex justify-content-center">
+          <Col xs={12} md={7} className="d-flex justify-content-center">
             <Astronomy />
           </Col>
         </Row>
