@@ -13,7 +13,7 @@ function StackOverflowCard(props) {
         <Col xs={6}>
           <a href={props.link} style={{textDecoration: "none"}}><h6 className="mt-3 mb-3">{props.title}</h6></a>
           {tags.map(element => (
-            <p className="me-4 text-light p-1 rounded" style={{display: "inline-block", backgroundColor: "#6A6B83"}}>{element}</p>
+            <p key={element} className="me-4 text-light p-1 rounded" style={{display: "inline-block", backgroundColor: "#6A6B83"}}>{element}</p>
           ))}
         </Col>
         <Col className="d-flex align-content-end flex-wrap mb-3" xs={3}>

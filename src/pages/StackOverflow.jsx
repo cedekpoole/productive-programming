@@ -23,7 +23,7 @@ const StackOverflow = () => {
     return (
         <Container>
             <StackOverflowWidget />
-            <h3 className="mt-5 mb-4">Hot React.js Questions</h3>
+            <h3 className="mt-5 mb-4 text-light">Hot React.js Questions</h3>
             <div style={{height: "270px", overflowY: "scroll"}}>
                 {data.map((element, index) => (
                     <StackCard
