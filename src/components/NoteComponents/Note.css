@@ -6,26 +6,27 @@
     border: 1.5px solid rgba(255, 255, 255, 0.326);
     color: #fff;
     padding: 15px;
-    min-height: 140px;
+    min-height: 200px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     word-wrap: break-word;
 }
+
 .note__footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 15px;
+    padding: 15px;
 }
 
 .note__body {
-    justify-content: center;
-    align-content: center;
     display: flex;
-    align-items: center;
     height: 100%;
+    font-size: 18px;
+    padding: 15px;
 }
+
 .note textarea {
     white-space: pre-wrap;
     background: transparent;
@@ -33,13 +34,17 @@
     color: #fff;
     resize: none;
     font-size: 18px;
+    padding: 15px;
 }
+
 .note textarea:focus {
     outline: none;
 }
+
 .note textarea::placeholder {
     color: #fff;
 }
+
 .note__save {
     background: transparent;
     transition: 0.1s ease-in-out;
@@ -49,18 +54,24 @@
     padding: 4px 10px;
     font-size: 13px;
     cursor: pointer;
+    transition: 1s;
 }
+
 .note__save:hover {
     background: #fff;
     border: 1.5px solid #fff;
     color: #4b1589;
+    transition: 1s;
 }
+
 .note__delete {
     cursor: pointer;
 }
+
 .note__delete:hover {
     transform: scale(1.1);
 }
+
 .char__progress {
-    background-color: #fff!important;
+    background-color: #fff !important;
 }
