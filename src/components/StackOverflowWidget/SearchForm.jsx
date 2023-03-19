@@ -4,7 +4,9 @@ import { ImStackoverflow } from "react-icons/im"
 function SearchForm(props) {
   return (
     <Form>
-      <label className="display-6 mb-2"><ImStackoverflow /></label>
+      <div className="text-center">
+        <label className="display-5 mb-2 mt-0"><ImStackoverflow /></label>
+      </div>
       <div className="input-group">
         <input
           onChange={props.handleInputChange}
