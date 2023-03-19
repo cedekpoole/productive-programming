@@ -30,7 +30,8 @@ const AstronomyAPI = () => {
 
   const handleSuccess = () => {
     return (
-      <Card className="h-100" style={{ width: "80%" }}>
+      <div className="mb-3">
+      <Card className="h-100" style={{ width: "95%" }}>
         <div>
           <Card.Img
             variant="top"
@@ -46,6 +47,7 @@ const AstronomyAPI = () => {
           </Card.Body>
         </div>
       </Card>
+    </div>
     );
   };
 
