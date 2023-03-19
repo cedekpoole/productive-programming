@@ -1,7 +1,7 @@
 import { React, useState, useEffect, useRef } from "react";
 import "../components/NoteComponents/Note.css";
 import Note from "../components/NoteComponents/Note"
-import CreateNote from "../components/NoteComponents/CreateNote";
+// import CreateNote from "../components/NoteComponents/CreateNote";
 import { v4 as uuid } from "uuid";
 
 
@@ -10,53 +10,38 @@ function Notes() {
     const [notes, setNotes] = useState([]);
     const [inputText, setInputText] = useState("");
 
-    // get text and store in state
-    const textHandler = (e) => {
-        setInputText(e.target.value);
-    };
+    // // get text and store in state
+    // const textHandler = (e) => {
+    //     setInputText(e.target.value);
+    // };
 
-    // add new note to the state array
-    const saveHandler = () => {
-        setNotes((prevState) => [
-            ...prevState,
-            {
-                id: uuid(),
-                text: inputText
-            }
-        ]);
-        //clear the textarea
-        setInputText("");
-    };
+    // const saveHandler = () => {
+    //     const newNote = {
+    //       id: uuid(),
+    //       text: inputText,
+    //     };
+      
+    //     // Store the newly created note in the local storage
+    //     const storedNotes = JSON.parse(localStorage.getItem("notes")) || [];
+    //     const updatedNotes = [...storedNotes, newNote];
+    //     localStorage.setItem("notes", JSON.stringify(updatedNotes));
+      
+    //     setNotes(updatedNotes);
+    //     setInputText("");
+    //   };
+      
 
     //delete note function
     const deleteNote = (id) => {
         const filteredNotes = notes.filter((note) => note.id !== id);
         setNotes(filteredNotes);
+        localStorage.setItem("notes", JSON.stringify(filteredNotes));
     };
 
-    //apply the save and get functions using useEffect
-    //get the saved notes and add them to the array
     useEffect(() => {
-        const data = JSON.parse(localStorage.getItem("Notes"));
-        if (data) {
-            setNotes(data);
-        }
-    }, []);
-
-    //saving data to local storage
-    const isInitialMount = useRef(true);
-    useEffect(() => {
-        if (!isInitialMount.current) {
-            localStorage.setItem("Notes", JSON.stringify(notes));
-        } else {
-            isInitialMount.current = false;
-        }
-    }, [notes]);
-
-
-
-
-
+        const storedNotes = JSON.parse(localStorage.getItem("notes")) || [];
+        setNotes(storedNotes);
+      }, []);
 
     return (
         <div className="notes">
@@ -68,11 +53,11 @@ function Notes() {
                     deleteNote={deleteNote}
                 />
             ))}
-            <CreateNote
+            {/* <CreateNote
                 textHandler={textHandler}
                 saveHandler={saveHandler}
                 inputText={inputText}
-            />
+            /> */}
         </div>
     );
 }

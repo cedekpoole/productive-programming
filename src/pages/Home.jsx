@@ -7,6 +7,11 @@ import { Container, Row, Col } from 'react-bootstrap'
 
 
 function Home() {
+    const handleSave = (newNote) => {
+        const storedNotes = JSON.parse(localStorage.getItem("notes")) || [];
+        const updatedNotes = [...storedNotes, newNote];
+        localStorage.setItem("notes", JSON.stringify(updatedNotes));
+      };
 
     return (
         <div className="Home">
@@ -23,7 +28,7 @@ function Home() {
                     </Row>
                 </Col>
                 <Col>
-                <CreateNote />
+                <CreateNote saveHandler={handleSave}/>
                 </Col>
                 </Row>
                 <Row>

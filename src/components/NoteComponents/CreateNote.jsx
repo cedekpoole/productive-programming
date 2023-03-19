@@ -1,10 +1,27 @@
 import LinearProgress from "@mui/material/LinearProgress";
+import { useState } from 'react';
+import { v4 as uuid } from "uuid";
 
-function CreateNote({ textHandler, saveHandler, inputText }) {
 
+function CreateNote({ saveHandler }) {
+
+    const [inputText, setInputText] = useState("");
 //   //character limit
 //   const charLimit = 100;
 //   const charLeft = charLimit - inputText.length;
+
+const textHandler = (e) => {
+    setInputText(e.target.value);
+  };
+
+  const handleSave = () => {
+    const newNote = {
+      id: uuid(),
+      text: inputText,
+    };
+    saveHandler(newNote);
+    setInputText("");
+  };
 
   return (
     <div className="note" style={{ background: "rgba(255, 255, 255, 0)" }}>
@@ -18,7 +35,7 @@ function CreateNote({ textHandler, saveHandler, inputText }) {
       ></textarea>
       <div className="note__footer">
         {/* <span className="label">{charLeft} characters left</span> */}
-        <button className="note__save" onClick={saveHandler}>
+        <button className="note__save" onClick={handleSave}>
           Save
         </button>
       </div>
