@@ -1,72 +1,145 @@
 import './news.css'
-import { useState } from 'react';
-import { Card, Button, Col, Row } from 'react-bootstrap'
+import { useState, useEffect } from 'react';
+import { Card, Button, Col, Row } from 'react-bootstrap';
+import { format } from 'date-fns'
 
-const testData = {
-  "author": "Kris Holt",
-  "title": "Blizzard is making it easier to unlock new 'Overwatch 2' heroes",
-  "description": "One of the major (and controversial) changes Blizzard made in Overwatch 2 was gating new heroes behind a battle pass. However, it should be a little easier for players to unlock the latest character, Ramattra, in the game's second season. Players who opt for the free track of the battle pass won't need to grind through as many levels before they can use the new tank in all game modes. Making some weekly challenges less of a chore should mean players can level up more quickly too.\"After reviewing data for Season 1, we're moving Ramattra into Tier 45 of the Battle Pass and making a few more...",
-  "url": "https://www.engadget.com/overwatch-2-ramattra-battle-pass-205104977.html?src=rss",
-  "source": "Engadget",
-  "image": "https://s.yimg.com/os/creatr-uploaded-images/2022-12/c7a33a20-74d6-11ed-adeb-d092269cc262",
-  "category": "technology",
-  "language": "en",
-  "country": "us",
-  "published_at": "2022-12-05T20:51:04+00:00"
-};
-
-
+import axios from 'axios';
 
 const NewsWidget = () => {
   const [category, setCategory] = useState("technology");
+  const [searchResults, setSearchResults] = useState();
+  const [searchResultsPage, setSearchResultsPage] = useState(0);
 
-  function trimDescription() {
-    const charLimit = 110;
-    const descriptionLong = testData.description;
-
-    const firstSentence = testData.description.split('.')[0];
-    const secondSentence = testData.description.split('.')[1];
-
-    let descriptionShort = firstSentence;
-
-    if (descriptionShort.length < charLimit) {
-      descriptionShort = (`${firstSentence}. ${secondSentence}`)
+  const options = {
+    method: 'GET',
+    url: 'https://bing-news-search1.p.rapidapi.com/news/search',
+    params: {
+      q: 'programming, dev, tech',
+      category: 'ScienceAndTechnology',
+      mkt: 'en-GB',
+      safeSearch: 'Off',
+      textFormat: 'Raw',
+      sortBy: 'relevance'
+    },
+    headers: {
+      'X-BingApis-SDK': 'true',
+      'X-RapidAPI-Key': '31da255736msh936614cca1dd1acp1c7e31jsn7de1029aaaaf',
+      'X-RapidAPI-Host': 'bing-news-search1.p.rapidapi.com'
     }
+  };
+  
+  useEffect(() => {
 
-    descriptionShort = (`${descriptionShort.slice(0, charLimit)}...`);
-    return descriptionShort;
-  }
+  axios.request(options).then(function (response) {
+    console.log(response.data);
+    console.log(response.data.value);
+    setSearchResults(response.data.value);
+  
+  }).catch(function (error) {
+    console.error(error);
+  });
+  },[]);
 
-  const newsImage = <Col xs={3} className='square m-0'>
-    <img className='content' src={testData.image} />
-  </Col>
+  // function trimDescription() {
+  //   const charLimit = 110;
+  //   const descriptionLong = testData.description;
 
-  const newsCard = <div className="pane border-bottom p-3">
-    <Row>
-      {testData.image ? newsImage : ""}
-      <Col>
-        <Card.Title className="mb-1 lead" style={{ fontWeight: '600' }}>{testData.title}</Card.Title>
-        <Card.Text className="mb-2">{trimDescription()}</Card.Text>
-        <Card.Text className="mb-0 small text-muted">{testData.author} ({testData.source})</Card.Text>
-        <Card.Text className="mb-0 small text-muted">Category: {category}</Card.Text>
-      </Col>
-    </Row>
-  </div>
+  //   const firstSentence = testData.description.split('.')[0];
+  //   const secondSentence = testData.description.split('.')[1];
 
-  function getNewsContaner() {
+  //   let descriptionShort = firstSentence;
+
+  //   if (descriptionShort.length < charLimit) {
+  //     descriptionShort = (`${firstSentence}. ${secondSentence}`)
+  //   }
+
+  //   descriptionShort = (`${descriptionShort.slice(0, charLimit)}...`);
+  //   return descriptionShort;
+  // }
+
+  function generateNewsCards() {
+    const resultsArray = searchResults.map((result, i) => {
+      console.log(result.datePublished.split('T')[0]);
+      // const day = format(result.datePublished.split('T')[0], "EEE");
+      const headline = result.name;
+      const source = result.provider[0].name;
+      const sourceIconURL = "image" in result.provider[0] ? result.provider[0].image.thumbnail.contentUrl : "";
+      const description = result.description;
+      const imageURL = "image" in result ? result.image.thumbnail.contentUrl : "https://placehold.co/400x400?text=No+Image";
+      const articleURL = result.url;
+
+      return (
+        <div className="pane border-bottom p-3" key={i}>
+          <Row className='newsCard'>
+            <Col xs={3} className='square m-0'><a href={articleURL}>
+              <img className='newsThumbnail' src={imageURL} /></a>
+            </Col>
+            <Col>
+              <a href={articleURL}>
+                <Card.Title className="mb-1 lead" style={{ fontWeight: '600' }}>{headline}</Card.Title>
+              </a>
+
+              <Card.Text className="mb-2">{description} </Card.Text>
+              <Card.Text className="mb-0 small text-muted">
+                <img src={sourceIconURL} style={{ width: "1.5rem" }} /> &nbsp;
+                {source}</Card.Text>
+            </Col>
+          </Row>
+        </div>
+      )
+    });
+
+    console.log(resultsArray);
     return (
-      <div>
-        {newsCard}
-        {newsCard}
-      </div>)
-  }
+      <div className='newsScrollWrapper'>
+        {resultsArray}
+        <Button variant="primary">Load More</Button>
+      </div>
+    );
+  };
+
+  // generateNewsCards()
+  // const newsImage =
+  //   <Col xs={3} className='square m-0'>
+  //     <img className='newsThumbnail' src={testData[2].image.thumbnail.contentUrl} />
+  //   </Col>
+
+  // const newsCard = <div className="pane border-bottom p-3">
+  //   <Row>
+  //     {testData[1].image.thumbnail.contentUrl ? newsImage : ""}
+  //     <Col>
+  //       <Card.Title className="mb-1 lead" style={{ fontWeight: '600' }}>{testData[1].name}</Card.Title>
+  //       <Card.Text className="mb-2">{testData[1].description} </Card.Text>
+  //       <Card.Text className="mb-0 small text-muted">
+  //         {/* <img src={testData[1].provider[0].image.thumbnail.contentUrl} /> */}
+  //         {testData[1].provider[0].name}</Card.Text>
+  //     </Col>
+  //   </Row>
+  //   <Row>
+  //     {testData[2].image.thumbnail.contentUrl ? newsImage : ""}
+  //     <Col>
+  //       <Card.Title className="mb-1 lead" style={{ fontWeight: '600' }}>{testData[2].name}</Card.Title>
+  //       <Card.Text className="mb-2">{testData[2].description} </Card.Text>
+  //       <Card.Text className="mb-0 small text-muted">
+  //         {/* <img src={testData[1].provider[0].image.thumbnail.contentUrl} /> */}
+  //         {testData[2].provider[0].name}</Card.Text>
+  //     </Col>
+  //   </Row>
+  // </div>
+
+  // function getNewsContaner() {
+  //   return (
+  //     <div>
+  //       {generateNewsCards()}
+  //     </div>)
+  // }
+
   return (
     <div>
       <Card style={{ width: '39rem' }}>
         <Card.Body>
           <Card.Title>News Widget</Card.Title>
-          {getNewsContaner()}
-          <Button variant="primary">Load More</Button>
+          {searchResults && searchResults.length > 1 ? generateNewsCards() : ""}
         </Card.Body>
       </Card>
     </div>

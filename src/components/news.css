@@ -12,7 +12,7 @@
     padding-bottom: 100%;
   }
 
-  .square img {
+  .newsThumbnail {
     height: 100%;
     position: absolute;
     left: 0;
@@ -22,6 +22,16 @@
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%)
+  }
+
+  .newsScrollWrapper {
+    height: 20rem;
+    overflow: auto;
+  }
+
+  .newsCard a{
+    text-decoration: none;
+    color: black;
   }
   
   /* .content {
