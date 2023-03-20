@@ -82,7 +82,7 @@ const WeatherWidget = () => {
       const iconURL = (`http://openweathermap.org/img/wn/${forecastData.list[dateIndex].weather[0].icon}.png`);
 
       return (
-        <Col key={i}>
+        <Col key={i} className='text-center'>
           {day}<br />
           <img src={iconURL} style={{ width: '2rem' }} /><br />
           {temperature.toFixed(0)} °
@@ -108,7 +108,7 @@ const WeatherWidget = () => {
 
   function displaySpinner() {
     return (
-      <Col className='p-4'>
+      <Col className='p-4 d-flex justify-content-center'>
         <Spinner animation="border" size='xl' style={{ width: '5rem', height: '5rem' }} />
       </Col>
     )
