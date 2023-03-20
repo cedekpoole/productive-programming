@@ -33,6 +33,14 @@
     text-decoration: none;
     color: black;
   }
+
+  
+  .articleText{
+    height: 4.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.5em;
+}
   
   /* .content {
     position: absolute;

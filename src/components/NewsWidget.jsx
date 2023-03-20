@@ -6,7 +6,7 @@ import { format } from 'date-fns'
 import axios from 'axios';
 
 const NewsWidget = () => {
-  const [category, setCategory] = useState("technology");
+  const [category, setCategory] = useState("ScienceAndTechnology");
   const [searchResults, setSearchResults] = useState();
   const [searchResultsPage, setSearchResultsPage] = useState(0);
 
@@ -15,7 +15,7 @@ const NewsWidget = () => {
     url: 'https://bing-news-search1.p.rapidapi.com/news/search',
     params: {
       q: 'programming, dev, tech',
-      category: 'ScienceAndTechnology',
+      category: category,
       mkt: 'en-GB',
       safeSearch: 'Off',
       textFormat: 'Raw',
@@ -79,7 +79,7 @@ const NewsWidget = () => {
                 <Card.Title className="mb-1 lead" style={{ fontWeight: '600' }}>{headline}</Card.Title>
               </a>
 
-              <Card.Text className="mb-2">{description} </Card.Text>
+              <Card.Text className="mb-2 articleText">{description} </Card.Text>
               <Card.Text className="mb-0 small text-muted">
                 <img src={sourceIconURL} style={{ width: "1.5rem" }} /> &nbsp;
                 {source}</Card.Text>
