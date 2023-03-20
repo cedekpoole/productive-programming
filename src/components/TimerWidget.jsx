@@ -1,15 +1,20 @@
 import { Card, Button } from "react-bootstrap";
 import { useEffect, useState } from "react";
-import { Howl } from "howler";
-import { FiClock } from "react-icons/fi";
 
+// import howler - makes working with audio easier
+import { Howl } from "howler";
+// react icon
+import { FiClock } from "react-icons/fi";
+// import sfx that will be played at end of timer
 import timerMP3 from "../media/timer-sound.mp3";
 
+// make sound new instance of Howl
 let timerSound = new Howl({
   src: [timerMP3],
 });
 
 const TimerWidget = () => {
+  // Set the starting time to 25mins
   const [time, setTime] = useState(1500);
   const [startTimer, setStartTimer] = useState(false);
 
@@ -27,6 +32,9 @@ const TimerWidget = () => {
     setStartTimer(false);
   };
 
+  // Using setInterval, allow the timer to count down
+  // If time is more than 0, set the time to the current time - 1 every second
+  // If the time === 0, stop the interval and play the 'time up' sound
   useEffect(() => {
     const i = setInterval(() => {
       if (startTimer) {
@@ -51,6 +59,7 @@ const TimerWidget = () => {
             Pomodoro Timer
           </Card.Title>
           <Card.Text>
+            {/* place time into an easy-to-read format */}
             {`${
               Math.floor(time / 60) < 10
                 ? `0${Math.floor(time / 60)}`
@@ -58,7 +67,7 @@ const TimerWidget = () => {
             }:${time % 60 < 10 ? `0${time % 60}` : time % 60}`}
           </Card.Text>
           <Button variant="primary" className="me-2" onClick={toggleTimer}>
-            {startTimer ? "Pause" : "Start"}{" "}
+            {startTimer ? "Pause" : "Start"}
           </Button>
           <Button variant="danger" onClick={() => resetTimer()}>
             Reset

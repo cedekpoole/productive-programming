@@ -2,10 +2,12 @@ import axios from "axios";
 import { Spinner, Card } from "react-bootstrap";
 import { useState, useEffect } from "react";
 
+// Create a card using Nasa's api
 const AstronomyAPI = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // Retrieve APOD (Astronomy Picture of the day) data using the axios package
   useEffect(() => {
     axios
       .get(
@@ -30,13 +32,11 @@ const AstronomyAPI = () => {
       />
     );
   };
-
+  // if picture is a video, return an iframe instead of an image element
   const videoResponse = () => {
-    return (
-      <iframe width="400" height="315" src={data.url}></iframe>
-    );
+    return <iframe width="400" height="315" src={data.url}></iframe>;
   };
-
+  // if picture is an image, return an image element
   const imageResponse = () => {
     <Card.Img
       variant="top"
@@ -63,6 +63,8 @@ const AstronomyAPI = () => {
     );
   };
 
+  // if api call is successful, return the card with the desired data
+  // if the api call takes a while to load (or fails), return a spinner
   return loading ? handleLoading() : handleSuccess();
 };
 
