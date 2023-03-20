@@ -52,6 +52,9 @@
     border: none;
     background-color: grey;
     color: white;
+    outline: none;
+    width: 100%;
+    margin-left: 5px;
 
 }
 

@@ -18,6 +18,8 @@ function Notes() {
         setInputText(e.target.value);
     };
 
+    const [searchText, setSearchText] = useState("");
+
     const notesSaveHandler = () => {
         const newNote = {
             id: uuid(),
@@ -49,7 +51,7 @@ function Notes() {
     return (
         <div className="notes">
             <NotesHeader />
-            <SearchNotes />
+            <SearchNotes handleSearchNote={setSearchText}/>
             <div className="notes__content">
                 {notes.map((note) => (
                     <Note
