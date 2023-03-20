@@ -2,10 +2,7 @@ import { Button, Badge, Accordion, Form } from 'react-bootstrap';
 
 function NewsSearch(props) {
     return (
-        <Accordion>
-            <Accordion.Item eventKey="0">
-                <Accordion.Header>Search</Accordion.Header>
-                <Accordion.Body>
+       <div>
                     <Form className='py-2'>
                         <div className="input-group">
                             <input
@@ -24,7 +21,7 @@ function NewsSearch(props) {
                             </Button>
                         </div>
                     </Form>
-                    <div className="d-flex justify-content-evenly py-2">
+                    <div className="d-flex justify-content-evenly flex-wrap py-2">
                         {props.categoryList.map((category, i) =>
                         (
                             <Badge pill
@@ -39,9 +36,7 @@ function NewsSearch(props) {
                             </Badge>
                         ))}
                     </div>
-                </Accordion.Body>
-            </Accordion.Item>
-        </Accordion>
+            </div>
     )
 }
 

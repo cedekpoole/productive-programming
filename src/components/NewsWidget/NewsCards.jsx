@@ -3,8 +3,6 @@ import { Card, Button, Col, Row } from 'react-bootstrap';
 function NewsCards(props) {
     const resultsArray = props.searchResults.map((result, i) => {
 
-        console.log(result.datePublished.split('T')[0]);
-        // const day = format(result.datePublished.split('T')[0], "EEE");
         const headline = result.name;
         const source = result.provider[0].name;
         const sourceIconURL = "image" in result.provider[0] ? result.provider[0].image.thumbnail.contentUrl : "";
@@ -33,7 +31,6 @@ function NewsCards(props) {
         )
     });
 
-    console.log(resultsArray);
     return (
         <div className='newsScrollWrapper'>
             {resultsArray}

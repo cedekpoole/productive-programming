@@ -1,6 +1,6 @@
 import './news.css'
 import { useState, useEffect } from 'react';
-import { Card, Col, Spinner } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import NewsSearch from './NewsSearch';
 import NewsCards from './NewsCards';
 import NewsPlaceholder from './NewsPlaceholder';
@@ -53,10 +53,11 @@ const NewsWidget = () => {
         }
       };
 
-      axios.request(options).then(function (response) {
+      axios.request(options)
+      .then(function (response) {
         setSearchResults(response.data.value);
-
-      }).catch(function (error) {
+      })
+      .catch(function (error) {
         apiCallFail(error);
       });
     }
