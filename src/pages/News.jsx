@@ -2,8 +2,10 @@ import { useState, useEffect } from 'react';
 import { Card, Container } from 'react-bootstrap';
 import axios from 'axios';
 import '../components/NewsWidget/newsPage.css'
-import Masonry, {ResponsiveMasonry} from "react-responsive-masonry"
-import NewsPageCard  from '../components/NewsWidget/NewsPageCard';
+import Masonry, { ResponsiveMasonry } from "react-responsive-masonry"
+import NewsPageCard from '../components/NewsWidget/NewsPageCard';
+import NewsPageCards from '../components/NewsWidget/NewsPageCards';
+import NewsSearch from '../components/NewsWidget/NewsSearch';
 
 const News = () => {
     const [category, setCategory] = useState("");
@@ -47,7 +49,7 @@ const News = () => {
                 },
                 headers: {
                     'X-BingApis-SDK': 'true',
-                    // 'X-RapidAPI-Key': '31da255736msh936614cca1dd1acp1c7e31jsn7de1029aaaaf',
+                    'X-RapidAPI-Key': '31da255736msh936614cca1dd1acp1c7e31jsn7de1029aaaaf',
                     'X-RapidAPI-Host': 'bing-news-search1.p.rapidapi.com'
                 }
             };
@@ -66,19 +68,20 @@ const News = () => {
         <Container>
             <div className="notes__header"><h1 className="notes__title">News</h1></div>
             <Container>
-            <ResponsiveMasonry
-                columnsCountBreakPoints={{350: 1, 750: 2, 900: 3}}
-                
-            >
-             <Masonry gutter="15px">
-                    <NewsPageCard />
-                    <NewsPageCard />
-                   
-                    <NewsPageCard />
-                    <NewsPageCard />
+            <NewsSearch
+            value={searchString}
+            category={category}
+            categoryList={categoryList}
+            // handleInputChange={handleInputChange}
+            // handleFormSubmit={handleFormSubmit}
+            // handleKeyDown={handleKeyDown}
+            // handleCategorySearch={handleCategorySearch}
+          />
+            {searchResults && searchResults.length > 1 ?
+                <NewsPageCards 
+                searchResults={searchResults} /> :
+                ""}
 
-                    </Masonry>
-                    </ResponsiveMasonry> 
             </Container>
 
 

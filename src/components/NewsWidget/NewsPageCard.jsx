@@ -1,6 +1,6 @@
 import { Card, Container } from 'react-bootstrap';
 
-function NewsPageCard() {
+function NewsPageCard(props) {
 
     return (
         <Card>
