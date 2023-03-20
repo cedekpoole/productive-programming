@@ -1,9 +1,11 @@
 import './news.css'
 import { useState, useEffect } from 'react';
-import { Card, Button, Col, Row, ButtonGroup, Badge, Accordion, Form } from 'react-bootstrap';
-import { format } from 'date-fns'
+import { Card, Button, Col, Row, ButtonGroup, Badge, Accordion, Form, Spinner } from 'react-bootstrap';
+import NewsSearch from './NewsSearch';
+import { format } from 'date-fns';
 
 import axios from 'axios';
+
 
 const NewsWidget = () => {
   const [category, setCategory] = useState("ScienceAndTechnology");
@@ -12,6 +14,9 @@ const NewsWidget = () => {
   const [queryString, setQueryString] = useState('programming, dev, tech');
   const [searchType, setSearchType] = useState("news/search");
   const [searchString, setSearchString] = useState("");
+  const [apiFailCounter, setAPIFailCounter] = useState(0);
+
+
 
   const categoryList = [
     { name: 'Business' },
@@ -24,36 +29,44 @@ const NewsWidget = () => {
     { name: 'World' },
   ];
 
+  const apiCallFail = () => {
+    setTimeout(() => {
+      setAPIFailCounter(apiFailCounter + 1);
+    }, 1000);
+  };
+
+
   useEffect(() => {
+    if (apiFailCounter < 3) {
+      const options = {
+        method: 'GET',
+        url: `https://bing-news-search1.p.rapidapi.com/${searchType}`,
+        params: {
+          q: queryString,
+          category: category,
+          offset: searchResultsPage,
+          mkt: 'en-GB',
+          safeSearch: 'Moderate',
+          textFormat: 'Raw',
+          sortBy: 'Relevance'
+        },
+        headers: {
+          'X-BingApis-SDK': 'true',
+          'X-RapidAPI-Key': '31da255736msh936614cca1dd1acp1c7e31jsn7de1029aaaa',
+          'X-RapidAPI-Host': 'bing-news-search1.p.rapidapi.com'
+        }
+      };
 
-    const options = {
-      method: 'GET',
-      url: `https://bing-news-search1.p.rapidapi.com/${searchType}`,
-      params: {
-        q: queryString,
-        category: category,
-        offset: searchResultsPage,
-        mkt: 'en-GB',
-        safeSearch: 'Moderate',
-        textFormat: 'Raw',
-        sortBy: 'Relevance'
-      },
-      headers: {
-        'X-BingApis-SDK': 'true',
-        'X-RapidAPI-Key': '31da255736msh936614cca1dd1acp1c7e31jsn7de1029aaaaf',
-        'X-RapidAPI-Host': 'bing-news-search1.p.rapidapi.com'
-      }
-    };
+      axios.request(options).then(function (response) {
+        console.log(response.data);
+        console.log(response.data.value);
+        setSearchResults(response.data.value);
 
-    axios.request(options).then(function (response) {
-      console.log(response.data);
-      console.log(response.data.value);
-      setSearchResults(response.data.value);
-
-    }).catch(function (error) {
-      console.error(error);
-    });
-  }, [searchResultsPage, category, queryString]);
+      }).catch(function (error) {
+        apiCallFail(error);
+      });
+    }
+  }, [searchResultsPage, category, queryString, apiFailCounter]);
 
   function loadMoreNews() {
     setSearchResultsPage(searchResultsPage + 10);
@@ -130,16 +143,44 @@ const NewsWidget = () => {
         <div className='d-flex justify-content-center pt-3'>
           <Button variant="primary" onClick={loadMoreNews}>Load More</Button>
         </div>
-        
+
       </div>
     );
   };
+
+
+    function displayError() {
+    return (
+      <Col className='p-4'>
+        Whoops!<br />
+        We were unable to fetch you the latest Tech news. :(
+      </Col>
+    )
+  };
+
+  function displaySpinner() {
+    return (
+      <Col className='p-4 d-flex justify-content-center'>
+        <Spinner animation="border" size='xl' style={{ width: '5rem', height: '5rem' }} />
+      </Col>
+    )
+  };
+
+  function loadContent() {
+    if (apiFailCounter >= 3) {
+      return displayError();
+    }
+    else {
+      return displaySpinner();
+    }
+  }
 
   return (
     <div>
       <Card style={{ width: '39rem' }}>
         <Card.Body>
           <Card.Title>News Widget</Card.Title>
+          <NewsSearch />
           <Accordion>
             <Accordion.Item eventKey="0">
               <Accordion.Header>Search</Accordion.Header>
@@ -179,7 +220,7 @@ const NewsWidget = () => {
               </Accordion.Body>
             </Accordion.Item>
           </Accordion>
-          {searchResults && searchResults.length > 1 ? generateNewsCards() : ""}
+          {searchResults && searchResults.length > 1 ? generateNewsCards() : loadContent()}
         </Card.Body>
       </Card>
     </div>
