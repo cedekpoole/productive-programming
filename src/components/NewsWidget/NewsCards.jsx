@@ -1,4 +1,5 @@
 import { Card, Button, Col, Row } from 'react-bootstrap';
+import { FaRegNewspaper } from 'react-icons/fa'
 
 function NewsCards(props) {
     const resultsArray = props.searchResults.map((result, i) => {
@@ -7,14 +8,18 @@ function NewsCards(props) {
         const source = result.provider[0].name;
         const sourceIconURL = "image" in result.provider[0] ? result.provider[0].image.thumbnail.contentUrl : "";
         const description = result.description;
-        const imageURL = "image" in result ? result.image.thumbnail.contentUrl : "https://placehold.co/400x400?text=No+Image";
+        const imageURL = "image" in result ? result.image.thumbnail.contentUrl : "";
         const articleURL = result.url;
+
+        const articleImage = <img className='newsThumbnail' src={imageURL} />;
+        const placeholderImage = <div className='d-flex justify-content-center align-items-center h-100'> <FaRegNewspaper style={{width: '3rem', height: '3rem', textDecoration: 'none' }}/></div>
 
         return (
             <div className="pane border-bottom p-3" key={i}>
                 <Row className='newsCard'>
                     <Col xs={3} className='square m-0'><a href={articleURL}>
-                        <img className='newsThumbnail' src={imageURL} /></a>
+                        {imageURL ? articleImage : placeholderImage}
+                        </a>
                     </Col>
                     <Col>
                         <a href={articleURL}>

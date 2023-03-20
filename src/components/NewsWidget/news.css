@@ -29,7 +29,7 @@
     overflow: auto;
   }
 
-  .newsCard a{
+  .newsCard a, .newsCard svg{
     text-decoration: none;
     color: black;
   }

@@ -7,10 +7,10 @@ import NewsPlaceholder from './NewsPlaceholder';
 import axios from 'axios';
 
 const NewsWidget = () => {
-  const [category, setCategory] = useState("ScienceAndTechnology");
+  const [category, setCategory] = useState("");
   const [searchResults, setSearchResults] = useState();
   const [searchResultsPage, setSearchResultsPage] = useState(0);
-  const [queryString, setQueryString] = useState('programming, dev, tech');
+  const [queryString, setQueryString] = useState('tech, coding');
   const [searchType, setSearchType] = useState("news/search");
   const [searchString, setSearchString] = useState("");
   const [apiFailCounter, setAPIFailCounter] = useState(0);
@@ -48,7 +48,7 @@ const NewsWidget = () => {
         },
         headers: {
           'X-BingApis-SDK': 'true',
-          'X-RapidAPI-Key': '31da255736msh936614cca1dd1acp1c7e31jsn7de1029aaaaf',
+          // 'X-RapidAPI-Key': '31da255736msh936614cca1dd1acp1c7e31jsn7de1029aaaaf',
           'X-RapidAPI-Host': 'bing-news-search1.p.rapidapi.com'
         }
       };
