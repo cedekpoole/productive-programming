@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 
+// use axios to send a GET request and retrieve quote data
 const ZenQuotes = () => {
   const [data, setData] = useState([]);
 
@@ -8,6 +9,7 @@ const ZenQuotes = () => {
     axios
       .get("https://api.goprogram.ai/inspiration")
       .then((response) => {
+        // set the state of data as whatever is retrieved from the quote api
         setData(response.data);
       })
       .catch((err) => {

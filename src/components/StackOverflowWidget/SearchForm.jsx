@@ -1,6 +1,7 @@
 import { Form, Button } from "react-bootstrap";
 import { ImStackoverflow } from "react-icons/im"
 
+// Create search form that will be used in the stackoverflow widget 
 function SearchForm(props) {
   return (
     <Form>

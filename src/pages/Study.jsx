@@ -1,11 +1,14 @@
-import Timer from "../components/TimerWidget";
-import Astronomy from "../utils/AstronomyAPI";
 import { useState } from "react";
 import { BsFillPlayCircleFill } from "react-icons/bs";
 import { BsPauseCircleFill } from "react-icons/bs";
 import { Container, Row, Col, Card } from "react-bootstrap";
-import Quote from '../utils/ZenQuotesAPI';
 
+// Import API and timer components
+import Astronomy from "../utils/AstronomyAPI";
+import Quote from "../utils/ZenQuotesAPI";
+import Timer from "../components/TimerWidget";
+
+// Use Howler for audio
 import { Howl } from "howler";
 import studyMP3 from "../media/study-music.mp3";
 
@@ -13,6 +16,7 @@ const studyMusic = new Howl({
   src: [studyMP3],
 });
 
+// Structure the study page
 const Study = () => {
   const [playMusic, setPlayMusic] = useState(false);
 
@@ -28,6 +32,7 @@ const Study = () => {
         <Col xs={12} md={5} className="mb-2 border-end border-white">
           <Row>
             <Col className="mb-3 d-flex justify-content-center">
+              {/* Use timer component */}
               <Timer />
             </Col>
             <Col className="d-flex justify-content-center">
@@ -39,6 +44,8 @@ const Study = () => {
                   <Card.Body>
                     <Card.Title className="mb-0">Music to Focus</Card.Title>
                     <Card.Text style={{ fontSize: "2rem" }}>
+                      {/* When icon is clicked, toggle the music and change icon to 
+                      corresponding state */}
                       <span onClick={toggleMusic}>
                         {playMusic ? (
                           <BsPauseCircleFill role="button" />

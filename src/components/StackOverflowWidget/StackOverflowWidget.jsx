@@ -1,14 +1,17 @@
-import { Card, Button } from "react-bootstrap";
+// Import created components needed for the stackoverflow widget
 import SearchForm from "./SearchForm";
 import StackOverflowCard from "./StackOverflowCard";
+
 import axios from "axios";
 import { useState, useEffect } from "react";
 
 const StackOverflowWidget = () => {
+  // Use the useState react hook to track api data and user search value
   const [search, setSearch] = useState("");
   const [data, setData] = useState([]);
   const [searchToExecute, setSearchToExecute] = useState("javascript");
 
+  // Retrieve data from stackoverflow via the package axios
   useEffect(() => {
     axios
       .get(
@@ -26,10 +29,12 @@ const StackOverflowWidget = () => {
   };
 
   const handleFormSubmit = (event) => {
+    // stop page from refreshing when form is submitted
     event.preventDefault();
+    // update the executed search when the form is submitted
     setSearchToExecute(search);
   };
-
+  // allow the user to submit form using the enter button
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
       event.preventDefault();
@@ -45,6 +50,8 @@ const StackOverflowWidget = () => {
         handleKeyDown={handleKeyDown}
       />
       <div className="mt-1" style={{ height: "220px", overflowY: "scroll" }}>
+        {/* Map over stackoverflow data and place each 
+        element into its own card */}
         {data.map((element, index) => (
           <StackOverflowCard
             votes={element.score}
