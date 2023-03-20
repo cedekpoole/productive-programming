@@ -1,4 +1,4 @@
-import NewsWidget from '../components/NewsWidget'
+import NewsWidget from '../components/NewsWidget/NewsWidget'
 import CreateNote from '../components/NoteComponents/CreateNote'
 import StackOverflowWidget from '../components/StackOverflowWidget/StackOverflowWidget'
 import TimerWidget from '../components/TimerWidget'
