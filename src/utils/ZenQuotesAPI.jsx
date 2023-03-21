@@ -23,7 +23,7 @@ const ZenQuotes = () => {
         <blockquote className="blockquote text-dark">
           <p>{`"${data.quote}"`}</p>
         </blockquote>
-        <figcaption className="blockquote-footer text-danger">{data.author}</figcaption>
+        <figcaption className="blockquote-footer" style={{color: "rgb(56 20 195 / 90%)"}}>{data.author}</figcaption>
       </figure>
     </div>
   );

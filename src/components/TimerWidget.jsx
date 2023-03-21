@@ -57,7 +57,7 @@ const TimerWidget = () => {
             <FiClock className="mb-2" /> <br />
             Pomodoro Timer
           </Card.Title>
-          <Card.Text>
+          <Card.Text style={{fontSize: "20px"}}>
             {/* place time into an easy-to-read format */}
             {`${
               Math.floor(time / 60) < 10
@@ -65,7 +65,7 @@ const TimerWidget = () => {
                 : `${Math.floor(time / 60)}`
             }:${time % 60 < 10 ? `0${time % 60}` : time % 60}`}
           </Card.Text>
-          <Button variant="primary" className="me-2" onClick={toggleTimer}>
+          <Button className="me-2" onClick={toggleTimer} style={{backgroundColor: "rgb(56 20 195 / 80%)", border: "1px solid #6444e3"}}>
             {startTimer ? "Pause" : "Start"}
           </Button>
           <Button variant="danger" onClick={() => resetTimer()}>
