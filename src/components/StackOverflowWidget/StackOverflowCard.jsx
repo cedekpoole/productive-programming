@@ -8,8 +8,8 @@ function StackOverflowCard(props) {
   // Structure and style the stackoverflow card
   return (
     <Container>
-      <Row className="border border-light rounded" style={{ color: "#3993DD" }}>
-        <Col xs={3} className="text-center" style={{ fontSize: "12px" }}>
+      <Row className="border border-light rounded bg-dark" style={{ color: "#3993DD" }}>
+        <Col xs={3} className="text-center border" style={{ fontSize: "12px" }}>
           <p className="mt-2 mb-1">
             <span style={{ fontSize: "16px" }}>{props.votes}</span>
             <br />
@@ -29,7 +29,7 @@ function StackOverflowCard(props) {
           {tags.map((element) => (
             <p
               key={element}
-              className="me-4 text-light p-1 rounded"
+              className="me-3 text-light p-1 rounded"
               style={{ display: "inline-block", backgroundColor: "#6A6B83" }}
             >
               {element}
