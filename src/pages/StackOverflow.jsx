@@ -15,7 +15,7 @@ const StackOverflow = () => {
   useEffect(() => {
     axios
       .get(
-        `https://api.stackexchange.com/2.3/questions?fromdate=${date}&order=desc&sort=hot&tagged=react&site=stackoverflow`
+        // `https://api.stackexchange.com/2.3/questions?fromdate=${date}&order=desc&sort=hot&tagged=react&site=stackoverflow`
       )
       .then((response) => {
         setData(response.data.items);

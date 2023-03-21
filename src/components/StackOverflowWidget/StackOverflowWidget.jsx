@@ -15,7 +15,7 @@ const StackOverflowWidget = () => {
   useEffect(() => {
     axios
       .get(
-        `https://api.stackexchange.com/2.3/search/advanced?order=desc&sort=relevance&q=${searchToExecute}&site=stackoverflow`
+        // `https://api.stackexchange.com/2.3/search/advanced?order=desc&sort=relevance&q=${searchToExecute}&site=stackoverflow`
       )
       .then((res) => {
         setData(res.data.items);
