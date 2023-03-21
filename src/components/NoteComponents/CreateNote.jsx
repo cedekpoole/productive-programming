@@ -2,7 +2,6 @@ import LinearProgress from "@mui/material/LinearProgress";
 import { useState } from 'react';
 import { v4 as uuid } from "uuid";
 
-
 function CreateNote({ saveHandler }) {
 
     const [inputText, setInputText] = useState("");
