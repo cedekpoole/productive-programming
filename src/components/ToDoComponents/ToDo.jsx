@@ -24,7 +24,8 @@ const ToDo = ({ todos, updateTodo, removeTodo }) => {
     }
 
     return todos.map((todo, index) => (
-        <div className="todo-row" key={index}>
+       <div className="todo-container">
+         <div className="todo-row" key={index}>
             <div key={todo.id}>
                 {todo.text}
             </div>
@@ -40,6 +41,7 @@ const ToDo = ({ todos, updateTodo, removeTodo }) => {
                 />
             </div>
         </div>
+       </div>
     ));
 };
 
