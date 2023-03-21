@@ -63,10 +63,9 @@ const WeatherWidget = () => {
     return (
       <Row>
         <Col xs="6">
-          <img src={iconURL} /><br />
-          {`${city}, ${countryCode}`}&nbsp;<IoLocationSharp />
+          <img src={iconURL} />
         </Col>
-        <Col xs="6" style={{ fontSize: '4rem' }}>
+        <Col xs="6" style={{ fontSize: '4rem' }} className="d-flex flex-nowrap justify-content-end">
           {`${temperature}°c`}
         </Col>
       </Row>
@@ -96,6 +95,17 @@ const WeatherWidget = () => {
       </Row>
     );
   };
+
+  function generateWidgetTitle() {
+    const city = weatherData.name;
+    const countryCode = weatherData.sys.country;
+
+    return (
+      <div className='d-flex justify-content-between'>
+      <Card.Title>Weather Widget</Card.Title><div>{`${city}, ${countryCode}`}&nbsp;<IoLocationSharp /></div>
+      </div>
+    )
+  }
 
   function displayError() {
     return (
@@ -134,9 +144,11 @@ const WeatherWidget = () => {
 
   return (
     <div>
-      <Card bg="dark" text='light'>
+      <Card bg="dark" text='light' style={{borderRadius: "15px", padding: "15px"}}>
         <Card.Body>
-          <Card.Title>Weather Widget</Card.Title>
+          
+          {weatherData && weatherData.main ? generateWidgetTitle() : <Card.Title> "Weather Widget" </Card.Title>}
+          
           {weatherData && weatherData.main ? generateWeather() : loadContent()}
         </Card.Body>
       </Card>
