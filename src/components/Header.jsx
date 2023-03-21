@@ -2,20 +2,22 @@
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import './Header.css'
+import logo from "../assets/images/productive-programming-logo.png";
 
 // Import link container that allows bootstrap and react router to work together
 import { LinkContainer } from 'react-router-bootstrap'
 
 function Header () {
     return (
-        <Navbar id="mainNavbar" expand="lg" className="navbar-dark pb-1 fixed-top mb-5" collapseOnSelect>
-          <Navbar.Brand className="mx-3">Productive Programming</Navbar.Brand>
+        <Navbar id="mainNavbar" expand="lg" className="navbar-dark fixed-top mb-5" collapseOnSelect>
+          <LinkContainer to="/">
+          <Navbar.Brand className="mx-3">
+            <img src={logo} />
+          </Navbar.Brand>
+          </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto m-1">
-              <LinkContainer to="/">
-                <Nav.Link>Home</Nav.Link>
-              </LinkContainer>
+          <Navbar.Collapse className="mx-3" id="basic-navbar-nav">
+            <Nav className="m-1 gap-3">
               <LinkContainer to="/news">
               <Nav.Link>News</Nav.Link>
               </LinkContainer>
