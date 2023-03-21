@@ -38,13 +38,15 @@ const AstronomyAPI = () => {
   };
   // if picture is an image, return an image element
   const imageResponse = () => {
-    <Card.Img
-      variant="top"
-      src={data.hdurl}
-      alt={data.title}
-      className="img-fluid"
-      style={{ width: "400px", height: "315px" }}
-    />;
+    return (
+      <Card.Img
+        variant="top"
+        src={data.hdurl}
+        alt={data.title}
+        className="img-fluid"
+        style={{ width: "400px", height: "315px" }}
+      />
+    );
   };
 
   const handleSuccess = () => {
@@ -52,7 +54,7 @@ const AstronomyAPI = () => {
       <div className="mb-3">
         <Card className="h-100 bg-dark text-light" style={{ width: "100%" }}>
           <div>
-            {data.media_type === "video" ? videoResponse() : imageResponse()}
+            {data.media_type === "image" ? imageResponse() : videoResponse()}
             <Card.Body>
               <Card.Title>Astronomy Picture of the day</Card.Title>
               <Card.Text style={{ fontSize: "16px" }}>{data.title}</Card.Text>
