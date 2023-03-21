@@ -8,7 +8,7 @@
 .glass {
   border-radius: 20px;
   background: rgba(255, 255, 255, 0);
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   box-shadow: 0 4px 30px rgb(0 0 0 / 10%);
   border: 1px solid rgba(255, 255, 255, 0.3);
