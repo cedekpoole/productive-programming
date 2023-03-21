@@ -8,8 +8,8 @@ function StackOverflowCard(props) {
   // Structure and style the stackoverflow card
   return (
     <Container>
-      <Row className="border border-light rounded bg-dark" style={{ color: "#3993DD" }}>
-        <Col xs={3} className="text-center border" style={{ fontSize: "12px" }}>
+      <Row className="border-bottom border-3 border-dark text-dark">
+        <Col xs={3} className="text-center" style={{ fontSize: "12px" }}>
           <p className="mt-2 mb-1">
             <span style={{ fontSize: "16px" }}>{props.votes}</span>
             <br />
@@ -23,7 +23,7 @@ function StackOverflowCard(props) {
           <p>{`${props.views} views`}</p>
         </Col>
         <Col xs={6}>
-          <a href={props.link} style={{ textDecoration: "none" }} target="_blank">
+          <a href={props.link} className="text-dark" style={{ textDecoration: "none" }} target="_blank">
             <h6 className="mt-3 mb-3">{props.title}</h6>
           </a>
           {tags.map((element) => (

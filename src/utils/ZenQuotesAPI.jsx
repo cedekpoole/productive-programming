@@ -20,10 +20,10 @@ const ZenQuotes = () => {
   return (
     <div className="p-3 mt-3 text-center">
       <figure>
-        <blockquote className="blockquote text-white">
+        <blockquote className="blockquote text-dark">
           <p>{`"${data.quote}"`}</p>
         </blockquote>
-        <figcaption className="blockquote-footer">{data.author}</figcaption>
+        <figcaption className="blockquote-footer text-danger">{data.author}</figcaption>
       </figure>
     </div>
   );

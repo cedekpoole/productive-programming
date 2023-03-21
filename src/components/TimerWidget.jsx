@@ -51,9 +51,8 @@ const TimerWidget = () => {
   }, [startTimer, time]);
 
   return (
-    <div className="text-center glass" style={{ width: "18rem" }}>
-      <Card className="bg-transparent text-light border-0">
-        <Card.Body>
+    <div className="text-center glass text-dark p-3" style={{ width: "18rem" }}>
+        <Card.Body className="bg-transparent">
           <Card.Title>
             <FiClock className="mb-2" /> <br />
             Pomodoro Timer
@@ -80,9 +79,9 @@ const TimerWidget = () => {
             Break
           </Button>
         </Card.Body>
-      </Card>
     </div>
   );
+
 };
 
 export default TimerWidget;
