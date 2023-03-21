@@ -1,7 +1,7 @@
 import './news.css'
 import { useState, useEffect } from 'react';
 import { Card } from 'react-bootstrap';
-import NewsSearch from './NewsSearch';
+import NewsSearchBar from './NewsSearchBar';
 import NewsCards from './NewsCards';
 import NewsPlaceholder from './NewsPlaceholder';
 import axios from 'axios';
@@ -54,12 +54,12 @@ const NewsWidget = () => {
       };
 
       axios.request(options)
-      .then(function (response) {
-        setSearchResults(response.data.value);
-      })
-      .catch(function (error) {
-        apiCallFail(error);
-      });
+        .then(function (response) {
+          setSearchResults(response.data.value);
+        })
+        .catch(function (error) {
+          apiCallFail(error);
+        });
     }
   }, [searchResultsPage, category, queryString, apiFailCounter]);
 
@@ -105,7 +105,7 @@ const NewsWidget = () => {
       <Card style={{ width: '39rem' }}>
         <Card.Body>
           <Card.Title>News Widget</Card.Title>
-          <NewsSearch
+          <NewsSearchBar
             value={searchString}
             category={category}
             categoryList={categoryList}
