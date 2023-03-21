@@ -24,6 +24,11 @@ function ToDoList() {
         setTodos(prev => prev.map(item => (item.id === todoId ? newValue : item)));
     };
 
+    const removeTodo = id => {
+        const removedTodo = [...todos].filter(todo => todo.id !== id);
+        setTodos(removedTodo);
+    };
+
     return (
         <div>
             <h3>What things do you have to do today?</h3>
@@ -31,6 +36,7 @@ function ToDoList() {
             <ToDo
                 todos={todos}
                 updateTodo={updateTodo}
+                removeTodo={removeTodo}
             />
         </div>
     )
