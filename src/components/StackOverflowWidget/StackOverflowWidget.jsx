@@ -49,7 +49,7 @@ const StackOverflowWidget = () => {
         handleFormSubmit={handleFormSubmit}
         handleKeyDown={handleKeyDown}
       />
-      <div className="mt-1" style={{ height: "220px", overflowY: "scroll" }}>
+      <div className="mt-1" style={{ height: "272px", overflowY: "scroll" }}>
         {/* Map over stackoverflow data and place each 
         element into its own card */}
         {data.map((element, index) => (

@@ -2,9 +2,10 @@
 import StackOverflowWidget from "../components/StackOverflowWidget/StackOverflowWidget";
 import StackCard from "../components/StackOverflowWidget/StackOverflowCard";
 
+
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Container } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 
 const StackOverflow = () => {
   // Get date for the last day to use in API call
@@ -19,7 +20,6 @@ const StackOverflow = () => {
       )
       .then((response) => {
         setData(response.data.items);
-        console.log(data);
       })
       .catch((error) => {
         console.log(error);
@@ -29,23 +29,30 @@ const StackOverflow = () => {
   // return the structure of the stackoverflow page
   return (
     <Container>
-      <StackOverflowWidget />
-      <h3 className="mt-5 mb-4 text-light">Hot React.js Questions</h3>
-      <div style={{ height: "270px", overflowY: "scroll" }}>
-        {data.map((element, index) => (
-          <StackCard
-            votes={element.score}
-            title={element.title}
-            answers={element.answer_count}
-            link={element.link}
-            key={index}
-            views={element.view_count}
-            tags={element.tags}
-            user={element.owner.display_name}
-            image={element.owner.profile_image}
-          />
-        ))}
-      </div>
+      <Row>
+        <Col xl={6}>
+          <h3 className="mt-3 mb-3 text-light">Hot React.js Questions</h3>
+          <div style={{ height: "80vh", overflowY: "scroll" }}>
+            {data.map((element, index) => (
+              <StackCard
+                votes={element.score}
+                title={element.title}
+                answers={element.answer_count}
+                link={element.link}
+                key={index}
+                views={element.view_count}
+                tags={element.tags}
+                user={element.owner.display_name}
+                image={element.owner.profile_image}
+              />
+            ))}
+          </div>
+        </Col>
+        <Col xl={6}>
+          <StackOverflowWidget />
+        </Col>
+      </Row>
+      
     </Container>
   );
 };
