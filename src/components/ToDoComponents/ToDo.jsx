@@ -4,7 +4,7 @@ import DeleteForeverOutlinedIcon from "@mui/icons-material/DeleteForeverOutlined
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 
 
-const ToDo = ({ todos, updateTodo, removeTodo }) => {
+const ToDo = ({ todos, updateTodo, removeTodo, completeTodo }) => {
 
     const [edit, setEdit] = useState({
         id: null,
@@ -24,24 +24,26 @@ const ToDo = ({ todos, updateTodo, removeTodo }) => {
     }
 
     return todos.map((todo, index) => (
-       <div className="todo-container">
-         <div className="todo-row" key={index}>
-            <div key={todo.id}>
-                {todo.text}
-            </div>
-            <div className='todo-icons'>
-                <DeleteForeverOutlinedIcon
-                    className="todo-delete"
-                    onClick={() => removeTodo(todo.id)}
-                    aria-hidden="true"
-                />
-                <EditOutlinedIcon
-                    className="todo-edit"
-                    onClick={() => setEdit({ id: todo.id, value: todo.text })}
-                />
+        <div className="todo-container" key={todo.id}>
+            <div
+                className={todo.isComplete ? 'todo-row complete' : 'todo-row'}
+            >
+                <div key={todo.id} onClick={() => completeTodo(todo.id)}>
+                    {todo.text}
+                </div>
+                <div className='todo-icons'>
+                    <DeleteForeverOutlinedIcon
+                        className="todo-delete"
+                        onClick={() => removeTodo(todo.id)}
+                        aria-hidden="true"
+                    />
+                    <EditOutlinedIcon
+                        className="todo-edit"
+                        onClick={() => setEdit({ id: todo.id, value: todo.text })}
+                    />
+                </div>
             </div>
         </div>
-       </div>
     ));
 };
 

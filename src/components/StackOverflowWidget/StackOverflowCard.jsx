@@ -23,7 +23,7 @@ function StackOverflowCard(props) {
           <p>{`${props.views} views`}</p>
         </Col>
         <Col xs={6}>
-          <a href={props.link} style={{ textDecoration: "none" }}>
+          <a href={props.link} style={{ textDecoration: "none" }} target="_blank">
             <h6 className="mt-3 mb-3">{props.title}</h6>
           </a>
           {tags.map((element) => (
