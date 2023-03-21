@@ -102,7 +102,7 @@ const WeatherWidget = () => {
 
     return (
       <div className='d-flex justify-content-between'>
-      <Card.Title>Weather Widget</Card.Title><div>{`${city}, ${countryCode}`}&nbsp;<IoLocationSharp /></div>
+      <Card.Title>Today's Weather</Card.Title><div>{`${city}, ${countryCode}`}&nbsp;<IoLocationSharp /></div>
       </div>
     )
   }
@@ -144,14 +144,14 @@ const WeatherWidget = () => {
 
   return (
     <div>
-      <Card bg="dark" text='light' style={{borderRadius: "15px", padding: "15px"}}>
+      <div className='glassCard text-dark' >
         <Card.Body>
           
-          {weatherData && weatherData.main ? generateWidgetTitle() : <Card.Title> "Weather Widget" </Card.Title>}
+          {weatherData && weatherData.main ? generateWidgetTitle() : <Card.Title>Today's Weather</Card.Title>}
           
           {weatherData && weatherData.main ? generateWeather() : loadContent()}
         </Card.Body>
-      </Card>
+      </div>
     </div>
   );
 };
