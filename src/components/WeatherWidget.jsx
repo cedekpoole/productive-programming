@@ -91,7 +91,7 @@ const WeatherWidget = () => {
     });
     
     return (
-      <Row>
+      <Row className='d-flex flex-nowrap'>
         {forecastArray}
       </Row>
     );
@@ -134,7 +134,7 @@ const WeatherWidget = () => {
 
   return (
     <div>
-      <Card style={{ width: '19rem' }} bg="dark" text='light'>
+      <Card bg="dark" text='light'>
         <Card.Body>
           <Card.Title>Weather Widget</Card.Title>
           {weatherData && weatherData.main ? generateWeather() : loadContent()}

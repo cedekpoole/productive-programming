@@ -17,10 +17,10 @@ function NewsCards(props) {
         return (
             <div className="pane border-bottom p-3" key={i}>
                 <Row className='newsCard'>
-                    <Col xs={3} className='square m-0'><a href={articleURL}>
+                    {/* <Col xs={3} className='square m-0'><a href={articleURL}>
                         {imageURL ? articleImage : placeholderImage}
                         </a>
-                    </Col>
+                    </Col> */}
                     <Col>
                         <a href={articleURL}>
                             <Card.Title className="mb-1 lead" style={{ fontWeight: '600' }}>{headline}</Card.Title>
