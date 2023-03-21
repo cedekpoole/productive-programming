@@ -48,7 +48,7 @@ const NewsWidget = () => {
         },
         headers: {
           'X-BingApis-SDK': 'true',
-          // 'X-RapidAPI-Key': '31da255736msh936614cca1dd1acp1c7e31jsn7de1029aaaaf',
+          'X-RapidAPI-Key': '31da255736msh936614cca1dd1acp1c7e31jsn7de1029aaaaf',
           'X-RapidAPI-Host': 'bing-news-search1.p.rapidapi.com'
         }
       };
@@ -102,7 +102,7 @@ const NewsWidget = () => {
 
   return (
     <div>
-      <Card style={{ width: '39rem' }}>
+      <Card>
         <Card.Body>
           <Card.Title>News Widget</Card.Title>
           <NewsSearchBar
