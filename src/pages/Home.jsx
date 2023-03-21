@@ -4,6 +4,7 @@ import StackOverflowWidget from '../components/StackOverflowWidget/StackOverflow
 import TimerWidget from '../components/TimerWidget'
 import WeatherWidget from '../components/WeatherWidget'
 import { Container, Row, Col } from 'react-bootstrap'
+import ToDoWidget from '../components/ToDoComponents/ToDoWidget'
 
 
 function Home() {
@@ -11,32 +12,39 @@ function Home() {
         const storedNotes = JSON.parse(localStorage.getItem("notes")) || [];
         const updatedNotes = [...storedNotes, newNote];
         localStorage.setItem("notes", JSON.stringify(updatedNotes));
-      };
+    };
 
     return (
         <div className="Home">
             <Container>
                 <Row>
-                <Col>
-                    <Row>
-                        <Col>
-                        <WeatherWidget />
-                        </Col>
-                        <Col>
-                        <TimerWidget />
-                        </Col>
-                    </Row>
-                </Col>
-                <Col>
-                <CreateNote saveHandler={handleSave}/>
-                </Col>
+                    <Col>
+                        <Row>
+                            <Col>
+                                <WeatherWidget />
+                            </Col>
+                            <Col>
+                                <TimerWidget />
+                            </Col>
+                        </Row>
+                    </Col>
+                    <Col>
+                        <Row className="stackedCol gap-4">
+                            <Col>
+                                <CreateNote saveHandler={handleSave} />
+                            </Col>
+                            <Col>
+                                <ToDoWidget />
+                            </Col>
+                        </Row>
+                    </Col>
                 </Row>
                 <Row>
                     <Col>
-                    <NewsWidget />
+                        <NewsWidget />
                     </Col>
                     <Col>
-                    <StackOverflowWidget />
+                        <StackOverflowWidget />
                     </Col>
                 </Row>
             </Container>
