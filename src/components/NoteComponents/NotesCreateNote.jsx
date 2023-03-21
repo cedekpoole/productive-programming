@@ -7,7 +7,7 @@ function NotesCreateNote({textHandler, notesSaveHandler, inputText}) {
                 cols="10"
                 rows="5"
                 value={inputText}
-                placeholder="Type...."
+                placeholder="Type your note...."
                 onChange={textHandler}
                 maxLength="100"
             ></textarea>
