@@ -29,7 +29,7 @@ function Home() {
                         </Row>
                     </Col>
                     <Col>
-                        <Row>
+                        <Row className="stackedCol gap-2">
                             <Col>
                                 <CreateNote saveHandler={handleSave} />
                             </Col>

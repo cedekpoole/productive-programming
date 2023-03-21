@@ -30,8 +30,8 @@ function ToDoList() {
     };
 
     return (
-        <div>
-            <h3>What things do you have to do today?</h3>
+        <div className="todo-widget">
+            <h5>What things do you have to do today?</h5>
             <ToDoForm onSubmit={addTodo} />
             <ToDo
                 todos={todos}
