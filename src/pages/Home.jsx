@@ -15,7 +15,7 @@ function Home() {
     };
 
     return (
-        <div className="Home">
+        <div className="Home mt-3">
             <Container>
                 <Row>
                     <Col>

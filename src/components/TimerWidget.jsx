@@ -52,7 +52,7 @@ const TimerWidget = () => {
 
   return (
     <div className="text-center glass" style={{ width: "18rem" }}>
-      <Card className="bg-transparent text-light">
+      <Card className="bg-transparent text-light border-0">
         <Card.Body>
           <Card.Title>
             <FiClock className="mb-2" /> <br />
