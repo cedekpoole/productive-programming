@@ -14,24 +14,25 @@ function NewsPageCards(props) {
         const articleURL = result.url;
 
         const articleImage = <Card.Img src={imageURL} />;
-        const placeholderImage = <FaRegNewspaper style={{ width: '3rem', height: '3rem', textDecoration: 'none' }} />
-
+        const placeholderImage = <div style={{ width: "100%", height: "12rem", background: "mediumpurple" }} className="d-flex justify-content-center align-items-center">
+            <FaRegNewspaper style={{ width: '3rem', height: '3rem', textDecoration: 'none' }} />
+        </div>
         return (
             <Card key={i}>
-                <a href="#">
                 {imageURL ? articleImage : placeholderImage}
-                    <Card.Body>
-                        <Card.Title>
-                          {headline}
-                        </Card.Title>
-                        <Card.Text>
-                        {description}                          
-                        </Card.Text>
-                        <Card.Text>
-                            <small className="text-muted"><img src={sourceIconURL} style={{ width: "1.5rem" }} /> &nbsp;{source}</small>
-                        </Card.Text>
-                    </Card.Body>
-                </a>
+                <Card.Body>
+                    <Card.Title>
+                        <a href={articleURL}>
+                            {headline}
+                        </a>
+                    </Card.Title>
+                    <Card.Text>
+                        {description}
+                    </Card.Text>
+                    <Card.Text>
+                        <small className="text-muted"><img src={sourceIconURL} style={{ width: "1.5rem" }} /> &nbsp;{source}</small>
+                    </Card.Text>
+                </Card.Body>
             </Card>
         )
 
@@ -40,7 +41,8 @@ function NewsPageCards(props) {
 
     return (
         <ResponsiveMasonry
-            columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}>
+            columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 4 }} 
+            className="mt-3">
             <Masonry gutter="15px">
                 {resultsArray}
             </Masonry>

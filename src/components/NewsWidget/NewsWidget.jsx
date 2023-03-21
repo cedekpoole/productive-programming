@@ -1,7 +1,7 @@
 import './news.css'
 import { useState, useEffect } from 'react';
 import { Card } from 'react-bootstrap';
-import NewsSearch from './NewsSearch';
+import NewsSearchBar from './NewsSearchBar';
 import NewsCards from './NewsCards';
 import NewsPlaceholder from './NewsPlaceholder';
 import axios from 'axios';
@@ -105,7 +105,7 @@ const NewsWidget = () => {
       <Card style={{ width: '39rem' }}>
         <Card.Body>
           <Card.Title>News Widget</Card.Title>
-          <NewsSearch
+          <NewsSearchBar
             value={searchString}
             category={category}
             categoryList={categoryList}
