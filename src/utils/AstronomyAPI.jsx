@@ -44,7 +44,7 @@ const AstronomyAPI = () => {
         src={data.hdurl}
         alt={data.title}
         className="img-fluid"
-        style={{ width: "400px", height: "315px" }}
+        style={{ width: "400px", height: "315px", objectFit: "cover" }}
       />
     );
   };
