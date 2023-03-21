@@ -1,4 +1,4 @@
-import { React, useState, useEffect, useRef } from "react";
+import { React, useState, useEffect } from "react";
 import "../components/NoteComponents/Note.css";
 import "../components/NoteComponents/Notes.css";
 import Note from "../components/NoteComponents/Note";
@@ -12,13 +12,14 @@ function Notes() {
     //states
     const [notes, setNotes] = useState([]);
     const [inputText, setInputText] = useState("");
+    const [filteredNotes, setFilteredNotes] = useState(notes);
+    const [searchText, setSearchText] = useState("");
+
 
     // get text and store in state
     const textHandler = (e) => {
         setInputText(e.target.value);
     };
-
-    const [searchText, setSearchText] = useState("");
 
     const notesSaveHandler = () => {
         const newNote = {
@@ -35,6 +36,19 @@ function Notes() {
         setInputText("");
     };
 
+    const handleSearchNote = (searchText) => {
+        setSearchText(searchText);
+
+        if (!searchText) {
+            setFilteredNotes(notes);
+        } else {
+            const filtered = notes.filter((note) =>
+            note.text.toLowerCase().includes(searchText.toLowerCase())
+            );
+            setFilteredNotes(filtered);
+        }
+    };
+
 
     //delete note function
     const deleteNote = (id) => {
@@ -46,14 +60,19 @@ function Notes() {
     useEffect(() => {
         const storedNotes = JSON.parse(localStorage.getItem("notes")) || [];
         setNotes(storedNotes);
+        setFilteredNotes(storedNotes);
     }, []);
+
+    useEffect(() => {
+        setFilteredNotes(notes);
+    }, [notes]);
 
     return (
         <div className="notes">
             <NotesHeader />
-            <SearchNotes handleSearchNote={setSearchText}/>
+            <SearchNotes handleSearchNote={handleSearchNote}/>
             <div className="notes__content">
-                {notes.map((note) => (
+                {filteredNotes.map((note) => (
                     <Note
                         key={note.id}
                         id={note.id}
