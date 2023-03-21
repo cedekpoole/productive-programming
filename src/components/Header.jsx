@@ -8,11 +8,11 @@ import { LinkContainer } from 'react-router-bootstrap'
 
 function Header () {
     return (
-        <Navbar id="mainNavbar" expand="lg" className="navbar-dark pb-1 fixed-top mb-5" collapseOnSelect>
+        <Navbar id="mainNavbar" expand="lg" className="navbar-dark fixed-top mb-5" collapseOnSelect>
           <Navbar.Brand className="mx-3">Productive Programming</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto m-1">
+          <Navbar.Collapse className="mx-3" id="basic-navbar-nav">
+            <Nav className="m-1 gap-3">
               <LinkContainer to="/">
                 <Nav.Link>Home</Nav.Link>
               </LinkContainer>
