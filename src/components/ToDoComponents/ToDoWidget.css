@@ -50,6 +50,13 @@
     background-color: rgb(56 20 195 / 70%);
     color: white;
     min-width: 100px;
+    transition: 1s ease-in-out;
+
+}
+
+.todo-button:hover {
+    background-color: rgb(56 20 195 / 90%);
+    transition: 1s ease-in-out;
 }
 
 .todo-container {
@@ -68,6 +75,13 @@
     margin: 0 auto;
     color: white;
     margin-bottom: 15px;
+    transition: 1s ease-in-out;
+}
+
+.todo-row:hover {
+    transition: 1s ease-in-out;
+    background: rgb(56 20 195 / 90%);
+    cursor: pointer;
 }
 
 .todo-icons {
