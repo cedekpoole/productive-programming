@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Container, Card, Button } from 'react-bootstrap';
+import { Container, Card, Button, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 import '../components/NewsWidget/newsPage.css';
 import NewsPageCards from '../components/NewsWidget/NewsPageCards';
@@ -130,8 +130,14 @@ const News = () => {
                     />
                 </Card>
 
-                {searchResults && searchResults.length > 1 ? <NewsPageCards searchResults={searchResults} /> : < NewsPlaceholder />
-}
+                {searchResults && searchResults.length > 1 ?
+                    <NewsPageCards searchResults={searchResults} /> :
+                    <Row style={{height: "50vh"}} className='d-flex justify-content-center align-items-center py-3'>
+                        <Col className='card' sm={12} md={8} >
+                        < NewsPlaceholder apiFailCounter={apiFailCounter} />
+                    </Col>
+                    </Row>
+                }
 
                 <div className='d-flex justify-content-center py-3'>
                     {searchType == "news/search" && searchResults ? <Button variant="primary" onClick={loadMoreNews}>Load More</Button> : ""}

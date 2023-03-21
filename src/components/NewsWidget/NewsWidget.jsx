@@ -54,12 +54,12 @@ const NewsWidget = () => {
       };
 
       axios.request(options)
-      .then(function (response) {
-        setSearchResults(response.data.value);
-      })
-      .catch(function (error) {
-        apiCallFail(error);
-      });
+        .then(function (response) {
+          setSearchResults(response.data.value);
+        })
+        .catch(function (error) {
+          apiCallFail(error);
+        });
     }
   }, [searchResultsPage, category, queryString, apiFailCounter]);
 
