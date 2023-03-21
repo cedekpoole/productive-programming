@@ -42,7 +42,7 @@ const StackOverflowWidget = () => {
     }
   };
   return (
-    <div>
+    <div className="glass mt-3">
       <SearchForm
         value={search}
         handleInputChange={handleInputChange}
