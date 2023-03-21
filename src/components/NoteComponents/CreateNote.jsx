@@ -5,6 +5,7 @@ import { v4 as uuid } from "uuid";
 function CreateNote({ saveHandler }) {
 
     const [inputText, setInputText] = useState("");
+    const [saveMessage, setSaveMessage] = useState("");
 //   //character limit
 //   const charLimit = 100;
 //   const charLeft = charLimit - inputText.length;
@@ -20,6 +21,10 @@ const textHandler = (e) => {
     };
     saveHandler(newNote);
     setInputText("");
+    setSaveMessage("Note saved");
+    setTimeout(() => {
+      setSaveMessage("");
+    }, 1000);
   };
 
   return (
@@ -34,6 +39,7 @@ const textHandler = (e) => {
       ></textarea>
       <div className="note__footer">
         {/* <span className="label">{charLeft} characters left</span> */}
+        {saveMessage && <div className="note__message">{saveMessage}</div>}
         <button className="note__save" onClick={handleSave}>
           Save
         </button>
