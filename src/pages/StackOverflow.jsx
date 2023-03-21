@@ -29,7 +29,7 @@ const StackOverflow = () => {
   return (
     <Container>
       <Row>
-        <Col xl={6} className="glass mt-3">
+        <Col xl={6} className="glass mt-4">
           <h3 className="mt-2 mb-3 text-dark">Hot React.js Questions</h3>
           <div style={{ height: "80vh", overflowY: "scroll" }}>
             {data.map((element, index) => (
@@ -47,7 +47,7 @@ const StackOverflow = () => {
             ))}
           </div>
         </Col>
-        <Col xl={6} className="mt-3">
+        <Col xl={6} className="mt-2">
             <StackOverflowWidget />
         </Col>
       </Row>

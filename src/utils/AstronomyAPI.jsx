@@ -52,15 +52,15 @@ const AstronomyAPI = () => {
   const handleSuccess = () => {
     return (
       <div className="mb-3">
-        <Card className="h-100 bg-dark text-light" style={{ width: "100%" }}>
+        <div className="glass p-3" style={{ width: "100%" }}>
           <div>
             {data.media_type === "image" ? imageResponse() : videoResponse()}
             <Card.Body>
-              <Card.Title>Astronomy Picture of the day</Card.Title>
+              <Card.Title className="mt-2">Astronomy Picture of the day</Card.Title>
               <Card.Text style={{ fontSize: "16px" }}>{data.title}</Card.Text>
             </Card.Body>
           </div>
-        </Card>
+        </div>
       </div>
     );
   };
