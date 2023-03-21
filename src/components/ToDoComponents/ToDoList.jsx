@@ -1,12 +1,13 @@
 import { React, useState } from 'react'
 import ToDoForm from './ToDoForm'
+import ToDo from './ToDo';
 
 function ToDoList() {
     const [todos, setTodos] = useState([]);
 
     const addTodo = todo => {
         if (!todo.text || /^\s*$/.test(todo.text)) {
-            return
+            return;
         }
 
         const newTodos = [todo, ...todos];
@@ -15,12 +16,15 @@ function ToDoList() {
         console.log(...todos);
     }
 
-  return (
-    <div>
-        <h3>What things do you have to do today?</h3>
-        <ToDoForm onSubmit={addTodo}/>
-    </div>
-  )
+    return (
+        <div>
+            <h3>What things do you have to do today?</h3>
+            <ToDoForm onSubmit={addTodo} />
+            <ToDo
+                todos={todos}
+            />
+        </div>
+    )
 }
 
-export default ToDoList
+export default ToDoList;

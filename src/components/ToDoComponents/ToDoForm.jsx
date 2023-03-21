@@ -1,12 +1,24 @@
-import { React, useState } from 'react'
+import { React, useState } from 'react';
+import { v4 as uuid } from "uuid";
+ 
 
-function ToDoForm() {
+function ToDoForm(props) {
 
-    const [todoInput, setTodoInput] = useState("");
+    const [input, setInput] = useState("");
 
     const handleSubmit = e => {
         e.preventDefault();
-    }
+
+        props.onSubmit({
+            id: uuid(),
+            text: input
+        });
+        setInput('');
+    };
+
+    const handleChange = e => {
+        setInput(e.target.value);
+    };
 
   return (
     <div className="todo-container">
@@ -14,7 +26,8 @@ function ToDoForm() {
         <input 
         type="text" 
         placeholder="Add a todo" 
-        value={todoInput}
+        value={input}
+        onChange={handleChange}
         name="text" 
         className="todo-input" />
         <button className="todo-button">Add ToDo</button>
