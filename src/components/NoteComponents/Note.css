@@ -2,8 +2,8 @@
     background: rgba(255, 255, 255, 0.18);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.3);
     color: #fff;
     padding: 15px;
@@ -47,22 +47,22 @@
 }
 
 .note__save {
-    background: transparent;
-    transition: 0.1s ease-in-out;
-    border: 1.5px solid #fff;
-    border-radius: 10px;
-    color: #fff;
-    padding: 4px 10px;
-    font-size: 13px;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
-    transition: 1s;
+    outline: none;
+    background-color: rgba(56 20 195 / 70%);
+    color: white;
+    min-width: 100px;
+    transition: 1s ease-in-out;
+
 }
 
 .note__save:hover {
-    background: #fff;
-    border: 1.5px solid #fff;
-    color: #4b1589;
-    transition: 1s;
+    background: rgba(56 20 195 / 90%);
+    color: white;
+    transition: 1s ease-in-out;
 }
 
 .note__delete {

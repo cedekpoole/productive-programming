@@ -5,9 +5,9 @@
     word-wrap: break-word;
     margin: 0 auto;
     border-radius: 20px;
-    background: rgba(255, 255, 255, 0);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    /* background: rgba(255, 255, 255, 0); */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     box-shadow: 0 4px 30px rgb(0 0 0 / 10%);
     border: 1px solid rgba(255, 255, 255, 0.3);
     padding: 15px;
@@ -30,7 +30,7 @@
 .todo-input {
     border-radius: 4px 0 0 4px;
     padding: 6px 32px 6px 16px;
-    border: 2px solid #5d0cff;
+    border: 2px solid #6444e3;
     outline: none;
     background: transparent;
     color: white;
@@ -47,14 +47,20 @@
     border-radius: 0 4px 4px 0;
     cursor: pointer;
     outline: none;
-    background-color: #5d0cff;
+    background-color: rgb(56 20 195 / 70%);
     color: white;
     min-width: 100px;
+    transition: 1s ease-in-out;
+
+}
+
+.todo-button:hover {
+    background-color: rgb(56 20 195 / 90%);
+    transition: 1s ease-in-out;
 }
 
 .todo-container {
-    padding: 15px;
-    padding-bottom: 0;
+    padding: 0px 15px 0px 15px;
 }
 
 .todo-row {
@@ -64,11 +70,18 @@
     align-items: center;
     padding: 15px;
     justify-content: space-between;
-    background: #5d0cff;
+    background: rgb(56 20 195 / 70%);
     border-radius: 5px;
     margin: 0 auto;
     color: white;
     margin-bottom: 15px;
+    transition: 1s ease-in-out;
+}
+
+.todo-row:hover {
+    transition: 1s ease-in-out;
+    background: rgb(56 20 195 / 90%);
+    cursor: pointer;
 }
 
 .todo-icons {
