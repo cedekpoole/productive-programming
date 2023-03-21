@@ -16,9 +16,9 @@ function NewsSearchBar(props) {
                         value={props.value}
                     />
 
-                    <Button className="btn border" onClick={props.handleFormSubmit}>
+                    <button className="searchButton" onClick={props.handleFormSubmit}>
                         Search
-                    </Button>
+                    </button>
                 </div>
             </Form>
         </div>

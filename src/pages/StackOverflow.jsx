@@ -2,7 +2,6 @@
 import StackOverflowWidget from "../components/StackOverflowWidget/StackOverflowWidget";
 import StackCard from "../components/StackOverflowWidget/StackOverflowCard";
 
-
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
@@ -30,8 +29,8 @@ const StackOverflow = () => {
   return (
     <Container>
       <Row>
-        <Col xl={6}>
-          <h3 className="mt-3 mb-3 text-light">Hot React.js Questions</h3>
+        <Col xl={6} className="glass mt-3">
+          <h3 className="mt-2 mb-3 text-dark">Hot React.js Questions</h3>
           <div style={{ height: "80vh", overflowY: "scroll" }}>
             {data.map((element, index) => (
               <StackCard
@@ -48,11 +47,10 @@ const StackOverflow = () => {
             ))}
           </div>
         </Col>
-        <Col xl={6}>
-          <StackOverflowWidget />
+        <Col xl={6} className="mt-3">
+            <StackOverflowWidget />
         </Col>
       </Row>
-      
     </Container>
   );
 };

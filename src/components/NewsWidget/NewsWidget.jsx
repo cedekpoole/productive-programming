@@ -102,9 +102,9 @@ const NewsWidget = () => {
 
   return (
     <div>
-      <Card>
+      <div className='glassCard'>
         <Card.Body>
-          <Card.Title>News Widget</Card.Title>
+          <Card.Title>Todays Tech News</Card.Title>
           <NewsSearchBar
             value={searchString}
             category={category}
@@ -122,7 +122,7 @@ const NewsWidget = () => {
               apiFailCounter={apiFailCounter}
             />}
         </Card.Body>
-      </Card>
+      </div>
     </div>
   );
 };

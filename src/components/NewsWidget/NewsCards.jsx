@@ -15,7 +15,7 @@ function NewsCards(props) {
         const placeholderImage = <div className='d-flex justify-content-center align-items-center h-100'> <FaRegNewspaper style={{width: '3rem', height: '3rem', textDecoration: 'none' }}/></div>
 
         return (
-            <div className="pane border-bottom p-3" key={i}>
+            <div className="newsWidgetCard pane my-2 p-3" key={i}>
                 <Row className='newsCard'>
                     {/* <Col xs={3} className='square m-0'><a href={articleURL}>
                         {imageURL ? articleImage : placeholderImage}
@@ -27,7 +27,7 @@ function NewsCards(props) {
                         </a>
 
                         <Card.Text className="mb-2 articleText">{description} </Card.Text>
-                        <Card.Text className="mb-0 small text-muted">
+                        <Card.Text className="mb-0 small">
                             <img src={sourceIconURL} style={{ width: "1.5rem" }} /> &nbsp;
                             {source}</Card.Text>
                     </Col>
