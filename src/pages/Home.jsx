@@ -26,11 +26,11 @@ function Home() {
                                     <WeatherWidget />
                                 </Col>
                                 <Col>
-                                    <Row>
-                                        <Col xl={6}>
+                                    <Row className="gap-4 mobile-col">
+                                        <Col>
                                             <TimerWidget />
                                         </Col>
-                                        <Col xl={6}>
+                                        <Col>
                                             <CalendarWidget />
 
                                         </Col>
@@ -43,7 +43,7 @@ function Home() {
                             <NewsWidget />
                         </Col>
                     </Row>
-                    <Row className="gap-4">
+                    <Row className="gap-4 mobile-col">
                         <Col>
                             <Row className="stackedCol gap-4">
                                 <Col>
