@@ -4,12 +4,15 @@ import { v4 as uuid } from "uuid";
 
 function CreateNote({ saveHandler }) {
 
-    const [inputText, setInputText] = useState("");
-//   //character limit
-//   const charLimit = 100;
-//   const charLeft = charLimit - inputText.length;
+  const [inputText, setInputText] = useState("");
+  const [saveMessage, setSaveMessage] = useState("");
+  const [showSaveMessage, setShowSaveMessage] = useState(false);
 
-const textHandler = (e) => {
+  //   //character limit
+  //   const charLimit = 100;
+  //   const charLeft = charLimit - inputText.length;
+
+  const textHandler = (e) => {
     setInputText(e.target.value);
   };
 
@@ -20,6 +23,12 @@ const textHandler = (e) => {
     };
     saveHandler(newNote);
     setInputText("");
+    setSaveMessage("Note saved");
+    setShowSaveMessage(true);
+    setTimeout(() => {
+      setShowSaveMessage(false);
+      setSaveMessage("");
+    }, 1000);
   };
 
   return (
@@ -34,6 +43,7 @@ const textHandler = (e) => {
       ></textarea>
       <div className="note__footer">
         {/* <span className="label">{charLeft} characters left</span> */}
+        {saveMessage && <div className={`note__message ${showSaveMessage ? "show" : ""}`}>{saveMessage}</div>}
         <button className="note__save" onClick={handleSave}>
           Save
         </button>
