@@ -57,7 +57,7 @@
   align-items: center;
 }
 
-.study-container, .news-container, .stack-container {
+.study-container, .news-container, .stack-container, .notes-container {
   padding: 20px 40px;
 }
 
