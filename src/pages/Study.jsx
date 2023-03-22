@@ -38,7 +38,7 @@ const Study = () => {
             <Col className="d-flex justify-content-center">
                 <div
                   className="glass p-3"
-                  style={{ width: "18rem" }}
+                  style={{ width: "19rem" }}
                 >
                   <Card.Body>
                     <Card.Title className="mb-0">Music to Focus</Card.Title>
