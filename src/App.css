@@ -17,3 +17,15 @@
 .stackedCol {
   flex-direction: column;
 }
+
+.Home .row {
+  margin-right: 0 !important;
+}
+
+.Home .col {
+  padding: 0 !important;
+}
+
+.Home .col-12 {
+  padding: 0 !important;
+}

@@ -18,38 +18,47 @@ function Home() {
     return (
         <div className="Home mt-3">
             <Container>
-                <Row>
-                    <Col>
-                        <Row>
-                            <Col xs={12} className="mb-3">
-                                <WeatherWidget />
-                            </Col>
-                            <Col xl={6} className="mb-3">
-                                <TimerWidget />
-                            </Col>
-                            <Col xl={6} className="mb-3">
-                                <CalendarWidget />
-                            </Col>
-                        </Row>
-                    </Col>
-                    <Col>
-                        <Row className="stackedCol gap-4">
-                            <Col>
-                                <CreateNote saveHandler={handleSave} />
-                            </Col>
-                            <Col>
-                                <ToDoWidget />
-                            </Col>
-                        </Row>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col xl={6}>
-                        <NewsWidget />
-                    </Col>
-                    <Col xl={6}>
-                        <StackOverflowWidget />
-                    </Col>
+                <Row className="gap-4">
+                    <Row className="gap-4">
+                        <Col>
+                            <Row className="gap-4">
+                                <Col xs={12} >
+                                    <WeatherWidget />
+                                </Col>
+                                <Col>
+                                    <Row>
+                                        <Col xl={6}>
+                                            <TimerWidget />
+                                        </Col>
+                                        <Col xl={6}>
+                                            <CalendarWidget />
+
+                                        </Col>
+                                    </Row>
+                                </Col>
+
+                            </Row>
+                        </Col>
+                        <Col>
+                            <NewsWidget />
+                        </Col>
+                    </Row>
+                    <Row className="gap-4">
+                        <Col>
+                            <Row className="stackedCol gap-4">
+                                <Col>
+                                    <CreateNote saveHandler={handleSave} />
+                                </Col>
+                                <Col>
+                                    <ToDoWidget />
+                                </Col>
+                            </Row>
+
+                        </Col>
+                        <Col>
+                            <StackOverflowWidget />
+                        </Col>
+                    </Row>
                 </Row>
             </Container>
         </div>
@@ -57,3 +66,4 @@ function Home() {
 }
 
 export default Home
+
