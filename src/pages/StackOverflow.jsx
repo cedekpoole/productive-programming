@@ -62,7 +62,7 @@ const StackOverflow = () => {
             ))}
           </div>
         </Col>
-        <Col xl={6} className="mt-2">
+        <Col xl={6}>
           <StackOverflowWidget />
           <div className="glass p-3 mt-2 mb-3">
             <h3 className="p-2 mb-3 text-dark">Hot React.js Questions</h3>
