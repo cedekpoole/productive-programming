@@ -25,12 +25,12 @@ const Study = () => {
   playMusic ? studyMusic.play() : studyMusic.pause();
 
   return (
-    <Container>
-      <h1 className="display-3 text-dark">Study Lounge</h1>
+    <Container className="study-container">
+      <h1 className="my-3">Study Lounge</h1>
       <hr className="text-light"></hr>
       <Row className="text-center">
-        <Col xs={12} md={5} className="mb-2 border-end border-white">
-          <Row>
+        <Col xs={12} md={5} className="mb-2 border-end border-white study-time-music">
+          <Row style={{flexDirection: "column"}}>
             <Col className="mb-3 d-flex justify-content-center">
               {/* Use timer component */}
               <Timer />

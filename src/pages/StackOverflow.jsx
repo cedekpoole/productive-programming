@@ -41,10 +41,11 @@ const StackOverflow = () => {
 
   // return the structure of the stackoverflow page
   return (
-    <Container>
+    <Container className="stack-container">
+      <div className="notes__header my-3"><h1 className="notes__title">Stack Overflow</h1></div>
       <Row>
-        <Col xl={6} className="glass mt-4 mb-3">
-          <h3 className="mt-2 mb-3 text-dark">Top Questions This Week</h3>
+        <Col xl={6} className="glass mb-3 p-3">
+          <h3 className="p-2 mb-3 text-dark">Top Questions This Week</h3>
           <div style={{ height: "90vh", overflowY: "scroll" }}>
             {data2.map((element, index) => (
               <StackCard
@@ -63,8 +64,8 @@ const StackOverflow = () => {
         </Col>
         <Col xl={6} className="mt-2">
           <StackOverflowWidget />
-          <div className="glass p-2 mt-2 mb-3">
-            <h3 className="mt-2 mb-3 text-dark">Hot React.js Questions</h3>
+          <div className="glass p-3 mt-2 mb-3">
+            <h3 className="p-2 mb-3 text-dark">Hot React.js Questions</h3>
             <div style={{ height: "250px", overflowY: "scroll" }}>
               {data.map((element, index) => (
                 <StackCard

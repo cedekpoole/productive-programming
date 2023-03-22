@@ -51,3 +51,16 @@
   }
 }
   
+.study-time-music {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.study-container, .news-container, .stack-container {
+  padding: 20px 40px;
+}
+
+.news-content {
+  padding: 0 !important;
+}
