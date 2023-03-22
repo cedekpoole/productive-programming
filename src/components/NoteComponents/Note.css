@@ -77,3 +77,13 @@
 .char__progress {
     background-color: #fff !important;
 }
+
+.note__message {
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+}
+
+.note__message.show {
+    opacity: 1;
+    transition: opacity 2s ease-in-out;
+}
