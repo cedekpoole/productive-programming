@@ -26,7 +26,7 @@ const Study = () => {
 
   return (
     <Container>
-      <h1 className="display-3 text-dark mb-3 mt-2">Study Lounge</h1>
+      <h1 className="display-3 text-dark">Study Lounge</h1>
       <hr className="text-light"></hr>
       <Row className="text-center">
         <Col xs={12} md={5} className="mb-2 border-end border-white">
@@ -38,7 +38,7 @@ const Study = () => {
             <Col className="d-flex justify-content-center">
                 <div
                   className="glass p-3"
-                  style={{ width: "19rem" }}
+                  style={{ width: "17rem" }}
                 >
                   <Card.Body>
                     <Card.Title className="mb-0">Music to Focus</Card.Title>

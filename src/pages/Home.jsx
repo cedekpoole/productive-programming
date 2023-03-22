@@ -5,6 +5,7 @@ import TimerWidget from '../components/TimerWidget'
 import WeatherWidget from '../components/WeatherWidget'
 import { Container, Row, Col } from 'react-bootstrap'
 import ToDoWidget from '../components/ToDoComponents/ToDoWidget'
+import CalendarWidget from '../components/CalendarWidget'
 
 
 function Home() {
@@ -20,11 +21,14 @@ function Home() {
                 <Row>
                     <Col>
                         <Row>
-                            <Col>
+                            <Col xs={12} className="mb-3">
                                 <WeatherWidget />
                             </Col>
-                            <Col>
+                            <Col xl={6} className="mb-3">
                                 <TimerWidget />
+                            </Col>
+                            <Col xl={6} className="mb-3">
+                                <CalendarWidget />
                             </Col>
                         </Row>
                     </Col>
@@ -40,10 +44,10 @@ function Home() {
                     </Col>
                 </Row>
                 <Row>
-                    <Col>
+                    <Col xl={6}>
                         <NewsWidget />
                     </Col>
-                    <Col>
+                    <Col xl={6}>
                         <StackOverflowWidget />
                     </Col>
                 </Row>

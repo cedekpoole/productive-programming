@@ -18,7 +18,7 @@ const ZenQuotes = () => {
   }, []);
 
   return (
-    <div className="p-3 mt-3 text-center">
+    <div className="p-2 mt-3 text-center">
       <figure>
         <blockquote className="blockquote text-dark">
           <p>{`"${data.quote}"`}</p>
