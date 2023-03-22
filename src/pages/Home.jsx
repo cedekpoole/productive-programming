@@ -17,7 +17,7 @@ function Home() {
 
     return (
         <div className="Home mt-3">
-            <Container>
+            <Container className="py-4">
                 <Row className="gap-4">
                     <Row className="gap-4">
                         <Col>
