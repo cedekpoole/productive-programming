@@ -51,7 +51,7 @@ const TimerWidget = () => {
   }, [startTimer, time]);
 
   return (
-    <div className="text-center glass text-dark p-3" style={{ width: "18rem" }}>
+    <div className="text-center glass text-dark p-3" style={{ width: "19rem" }}>
         <Card.Body className="bg-transparent">
           <Card.Title>
             <FiClock className="mb-2" /> <br />
