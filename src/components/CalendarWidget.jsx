@@ -2,18 +2,17 @@ import React, { useState, useEffect } from "react";
 import { compareAsc, format } from 'date-fns'   
 
 const CalendarWidget = () => {
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState([]);
 
   useEffect(() => {
     const timer = setInterval(() => { 
-      setDate(format(new Date(), `kk:mm:ss MM/dd/yyyy`))
+      const formattedDate = format(new Date(), `kk:mm:ss MM/dd/yyyy`)
+      const dateString = JSON.stringify(formattedDate).substring(1, JSON.stringify(formattedDate).length -1 )
+      setDate(dateString.split(' '))
     }, 1000);
     return () => clearInterval(timer);
   });
 
-  const dateString = JSON.stringify(date).substring(1, JSON.stringify(date).length -1 )
-  const dateArr = dateString.split(' ')
- 
 
   return (
     <div className="text-center glass p-3 d-flex flex-column align-items-center" style={{width: "17rem"}}>
@@ -21,11 +20,12 @@ const CalendarWidget = () => {
         className="mb-0"
         style={{fontSize: "4rem"}}
       >
-        {dateArr[0]}
+        {date[0]}
       </p>
-      <p>{dateArr[1]}</p>
+      <p>{date[1]}</p>
     </div>
   );
 };
 
 export default CalendarWidget;
+
