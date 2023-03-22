@@ -68,7 +68,7 @@ function Notes() {
     }, [notes]);
 
     return (
-        <div className="notes">
+        <div className="notes notes-container container">
             <NotesHeader />
             <SearchNotes handleSearchNote={handleSearchNote}/>
             <div className="notes__content">
