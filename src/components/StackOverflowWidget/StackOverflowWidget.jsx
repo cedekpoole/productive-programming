@@ -42,14 +42,14 @@ const StackOverflowWidget = () => {
     }
   };
   return (
-    <div className="glass p-2" style={{padding: "15px"}}>
+    <div className="glass p-3" style={{padding: "15px"}}>
       <SearchForm
         value={search}
         handleInputChange={handleInputChange}
         handleFormSubmit={handleFormSubmit}
         handleKeyDown={handleKeyDown}
       />
-      <div className="mt-1" style={{ height: "272px", overflowY: "scroll" }}>
+      <div className="p-2 mt-1" style={{ height: "272px", overflowY: "scroll" }}>
         {/* Map over stackoverflow data and place each 
         element into its own card */}
         {data.map((element, index) => (

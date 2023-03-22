@@ -20,6 +20,7 @@
 
 .Home .row {
   margin-right: 0 !important;
+  margin-left: 0 !important;
 }
 
 .Home .col {
@@ -27,5 +28,39 @@
 }
 
 .Home .col-12 {
+  padding: 0 !important;
+}
+
+.Home .col-xl-6 {
+  padding: 0 !important;
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    max-width: 790px;
+  }
+}
+
+@media only screen and (max-width: 641px) {
+  .container {
+    max-width: 468px;
+  }
+
+  .mobile-col {
+    flex-direction: column;
+  }
+}
+  
+.study-time-music {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.study-container, .news-container, .stack-container {
+  padding: 20px 40px;
+}
+
+.news-content {
   padding: 0 !important;
 }

@@ -13,7 +13,7 @@
   }
   
   #mainNavbar .nav-link:hover {
-    color: rgba(245, 175, 25, 0.8) !important;
+    color: rgb(98, 67, 221, 0.8) !important;
   }
   
   #basic-navbar-nav {
@@ -21,7 +21,7 @@
   }
 
   .nav-link.active {
-    color: #f5af19 !important;
+    color: rgb(98, 67, 221) !important;
   }
 
   .nav-link {

@@ -4,7 +4,7 @@ import { ImStackoverflow } from "react-icons/im"
 // Create search form that will be used in the stackoverflow widget 
 function SearchForm(props) {
   return (
-    <Form>
+    <Form className="p-2">
       <div className="text-center">
         <label className="display-5 mb-2 mt-0"><ImStackoverflow /></label>
       </div>

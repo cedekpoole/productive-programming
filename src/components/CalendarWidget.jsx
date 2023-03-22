@@ -15,14 +15,19 @@ const CalendarWidget = () => {
 
 
   return (
-    <div className="text-center glass p-3 d-flex flex-column align-items-center" style={{width: "17rem"}}>
+
+    <div className="text-center glass p-3 d-flex flex-column align-items-center" style={{height: "100%"}}>
+      {/* <p className="border rounded p-2 text-light">{date.toLocaleDateString()}</p> */}
+      
       <p
-        className="mb-0"
-        style={{fontSize: "4rem"}}
+        className="mt-auto mb-0"
+        style={{fontSize: "3rem"}}
       >
         {date[0]}
       </p>
-      <p>{date[1]}</p>
+
+      <p className="mb-auto">{date[1]}</p>
+
     </div>
   );
 };

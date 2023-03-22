@@ -113,9 +113,9 @@ const News = () => {
     };
 
     return (
-        <Container>
-            <div className="notes__header"><h1 className="notes__title">News - {pageTitle}</h1></div>
-            <Container>
+        <Container className="news-container">
+            <div className="notes__header my-3"><h1 className="notes__title">News - {pageTitle}</h1></div>
+            <Container className="news-content">
                 <Card className='p-3'>
                     <NewsSearch
                         value={searchString}
