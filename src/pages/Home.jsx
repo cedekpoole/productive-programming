@@ -19,7 +19,7 @@ function Home() {
         <div className="Home mt-3">
             <Container className="py-4">
                 <Row className="gap-4">
-                    <Row className="gap-4">
+                    <Row className="gap-4 mobile-col">
                         <Col>
                             <Row className="gap-4">
                                 <Col xs={12} >
