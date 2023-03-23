@@ -94,6 +94,7 @@ Steps:
 - A separate Study page to aid in the user's ability to focus 
 - News page that allows the user to choose from a number of categories
 - A Stack Overflow page that gives users easy access to that particular day's 'Hot React.js questions'
+- Ability to add todos on home page, edit the todo item, delete it and mark it as 'completed'
 
 ## Roadmap
 This is an ongoing project - there is room for more features in the future. We would eventually like to give users the ability to make their own accounts and allow them to personalise their own productivity space themselves. Any suggestions on how to do this, or how to improve the look and functionality of the page are welcome :). 
