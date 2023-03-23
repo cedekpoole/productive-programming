@@ -70,9 +70,11 @@ Steps:
     - General refactoring of the code base
 
 - [bethanyryalls](https://github.com/bethanyryalls)
-    - Added notes section on home page and created a separate notes page. Implemented a search function that allows users to look up previous notes
+    - Created notes widget on home page and created a separate notes page. Implemented a search function that allows users to look up previously saved notes
     - Dealt with local storage (save note functionality) - saves the note written on the home page and stores it on Notes page 
     - Designed the navigation bar and logo for the application; took lead on the overall aesthetic of the app
+    - Created Todo widget on home page that allows the user to add a todo, edit it, delete it and mark as completed
+    - Implemented todo save functionality using local storage to display added todos, edited todos and remove any marked as 'completed'
     - General refactoring of the code base
 
 - [cedekpoole](https://github.com/cedekpoole)
