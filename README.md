@@ -70,9 +70,11 @@ Steps:
     - General refactoring of the code base
 
 - [bethanyryalls](https://github.com/bethanyryalls)
-    - Added notes section on home page and created a separate notes page. Implemented a search function that allows users to look up previous notes
+    - Created notes widget on home page and created a separate notes page. Implemented a search function that allows users to look up previously saved notes
     - Dealt with local storage (save note functionality) - saves the note written on the home page and stores it on Notes page 
     - Designed the navigation bar and logo for the application; took lead on the overall aesthetic of the app
+    - Created Todo widget on home page that allows the user to add a todo, edit it, delete it and mark as completed
+    - Implemented todo save functionality using local storage to display added todos, edited todos and remove any marked as 'completed'
     - General refactoring of the code base
 
 - [cedekpoole](https://github.com/cedekpoole)
@@ -92,6 +94,7 @@ Steps:
 - A separate Study page to aid in the user's ability to focus 
 - News page that allows the user to choose from a number of categories
 - A Stack Overflow page that gives users easy access to that particular day's 'Hot React.js questions'
+- Ability to add todos on home page, edit the todo item, delete it and mark it as 'completed'
 
 ## Roadmap
 This is an ongoing project - there is room for more features in the future. We would eventually like to give users the ability to make their own accounts and allow them to personalise their own productivity space themselves. Any suggestions on how to do this, or how to improve the look and functionality of the page are welcome :). 
