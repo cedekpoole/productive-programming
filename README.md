@@ -13,8 +13,9 @@ This project was a collaborative venture (contributors listed below). As a team,
 ### Technologies and Skills:
 - The JavaScript library React.js
 - AJAX (via the axios package)
+- Dealing with APIs (e.g. Open Weather API, Stack Exchange API, Bing News Search, Go Program AI, NASA API)
 - Bootstrap (via the React-Bootstrap npm package) and vanilla CSS; UI and UX design; responsive design
-- A plethora of different npm packages 
+- A plethora of different npm packages (e.g. Howler.js, react-router-dom, react-icons, react-router-bootstrap, date-fns, uuidv4)
 
 
 ### User Story: 
@@ -73,8 +74,9 @@ Steps:
 
 - [C4rli](https://github.com/c4rli)
     - Implemented the current and forecasted weather widget on the home page
-    - Created news section with search functionality (via input field and categories)
-    - Used said news functionality to create a separate news page, allowing the user to effortlessly look up a variety of news articles 
+    - Created news section with search functionality via the input field, allowing the user to effortlessly look up a variety of news articles 
+    - Used said news functionality to create a separate news page - can search up news categories to view top stories in for that particular section
+    - Created the favicon for the page
     - General refactoring of the code base
 
 - [bethanyryalls](https://github.com/bethanyryalls)
@@ -87,7 +89,9 @@ Steps:
 
 - [cedekpoole](https://github.com/cedekpoole)
     - Created a functional Pomodoro timer
-    - Created a stack overflow widget that allows the user to search up questions relevant to their search query; created a separate stack overflow page (also showing hot React.js questions for that particular day)
+    - Implemented a time widget that displays current time and date
+    - Created a stack overflow widget that allows the user to search up questions relevant to their search query
+    - Created a separate stack overflow page (also showing hot React.js questions for that particular day in addition to top questions of the week ofr easy user access)
     - Implemented a study page with functionality that would aid in keeping the user focused (e.g. Pomodoro timer, inspirational quote, music, astronomy picture of the day)
     - General refactoring of the code base
 
