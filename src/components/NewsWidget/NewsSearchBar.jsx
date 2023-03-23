@@ -4,7 +4,7 @@ function NewsSearchBar(props) {
     return (
         <div>
             <Form className='py-2'>
-                <div className="input-group">
+                <div className="input-group flex-nowrap">
                     <input
                         id="search"
                         name="search"
