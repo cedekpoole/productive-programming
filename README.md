@@ -13,7 +13,7 @@ This project was a collaborative venture (contributors listed below). As a team,
 ### Technologies and Skills:
 - The JavaScript library React.js
 - AJAX (via the axios package)
-Dealing with APIs (e.g. Open Weather API, Stack Exchange API, Bing News Search, Go Program AI, NASA API)
+- Dealing with APIs (e.g. Open Weather API, Stack Exchange API, Bing News Search, Go Program AI, NASA API)
 - Bootstrap (via the React-Bootstrap npm package) and vanilla CSS; UI and UX design; responsive design
 - A plethora of different npm packages (e.g. Howler.js, react-router-dom, react-icons, react-router-bootstrap, date-fns, uuidv4)
 
