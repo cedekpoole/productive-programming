@@ -15,7 +15,7 @@ const StackOverflowWidget = () => {
   useEffect(() => {
     axios
       .get(
-        // `https://api.stackexchange.com/2.3/search/advanced?order=desc&sort=relevance&q=${searchToExecute}&site=stackoverflow`
+        `https://api.stackexchange.com/2.3/search/advanced?order=desc&sort=relevance&q=${searchToExecute}&site=stackoverflow`
       )
       .then((res) => {
         setData(res.data.items);
@@ -42,14 +42,14 @@ const StackOverflowWidget = () => {
     }
   };
   return (
-    <div className="glass p-3" style={{padding: "15px"}}>
+    <div className="glass p-3 h-100 d-flex flex-column" style={{padding: "15px"}}>
       <SearchForm
         value={search}
         handleInputChange={handleInputChange}
         handleFormSubmit={handleFormSubmit}
         handleKeyDown={handleKeyDown}
       />
-      <div className="p-2 mt-1" style={{ height: "272px", overflowY: "scroll" }}>
+      <div className="p-2 mt-1 newsScrollWrapper" style={{ height: "272px", overflowY: "scroll" }}>
         {/* Map over stackoverflow data and place each 
         element into its own card */}
         {data.map((element, index) => (
