@@ -52,7 +52,7 @@ const News = () => {
                 },
                 headers: {
                     'X-BingApis-SDK': 'true',
-                    'X-RapidAPI-Key': '31da255736msh936614cca1dd1acp1c7e31jsn7de1029aaaaf',
+                    'X-RapidAPI-Key': 'ca3e3b7c4dmshcf0d18644a9b128p15b157jsnca8487f0f2a9',
                     'X-RapidAPI-Host': 'bing-news-search1.p.rapidapi.com'
                 }
             };
@@ -116,7 +116,7 @@ const News = () => {
         <Container className="news-container">
             <div className="notes__header my-3"><h1 className="notes__title">News - {pageTitle}</h1></div>
             <Container className="news-content">
-                <Card className='p-3'>
+                <div className='p-3 glassCard'>
                     <NewsSearch
                         value={searchString}
                         handleInputChange={handleInputChange}
@@ -128,20 +128,18 @@ const News = () => {
                         categoryList={categoryList}
                         handleCategorySearch={handleCategorySearch}
                     />
-                </Card>
+                </div>
 
                 {searchResults && searchResults.length > 1 ?
-                    <NewsPageCards searchResults={searchResults} /> :
-                    <Row style={{height: "50vh"}} className='d-flex justify-content-center align-items-center py-3'>
+                    <NewsPageCards searchResults={searchResults}
+                        searchType={searchType}
+                        loadMoreNews={loadMoreNews} /> :
+                    <Row style={{ height: "50vh" }} className='d-flex justify-content-center align-items-center py-3'>
                         <Col className='card' sm={12} md={8} >
-                        < NewsPlaceholder apiFailCounter={apiFailCounter} />
-                    </Col>
+                            < NewsPlaceholder apiFailCounter={apiFailCounter} />
+                        </Col>
                     </Row>
                 }
-
-                <div className='d-flex justify-content-center py-3'>
-                    {searchType == "news/search" && searchResults ? <Button variant="primary" onClick={loadMoreNews}>Load More</Button> : ""}
-                </div>
 
             </Container>
         </Container>

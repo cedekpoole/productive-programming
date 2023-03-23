@@ -27,6 +27,7 @@
 .newsScrollWrapper {
   height: 20rem;
   overflow: auto;
+  flex: 1 1 auto;
 }
 
 .newsCard a,
@@ -60,16 +61,33 @@
   color: white;
 }
 
-.searchButton {
+.newsWidgetCard a {
+color: white;
+text-decoration: none;
+}
+
+.searchButton, .loadMoreButton, .categoryButton, .categoryButtonActive{
   padding: 8px;
   border: none;
-  border-radius: 0 4px 4px 0;
+  border-radius: 4px;
   cursor: pointer;
   outline: none;
   background-color: rgb(56 20 195 / 70%);
   color: white;
   min-width: 100px;
   transition: 1s ease-in-out;
+}
+
+.searchButton{
+  border-radius: 0 4px 4px 0;
+}
+
+.categoryButton, .categoryButtonActive {
+  width: 100%;
+}
+
+.categoryButtonActive{
+  background-color: rgba(132, 101, 255, 0.7);
 }
 
 /* .content {

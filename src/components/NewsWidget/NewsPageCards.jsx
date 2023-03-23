@@ -13,40 +13,44 @@ function NewsPageCards(props) {
         const imageURL = "image" in result ? result.image.thumbnail.contentUrl : "";
         const articleURL = result.url;
 
-        const articleImage = <Card.Img src={imageURL} />;
-        const placeholderImage = <div style={{ width: "100%", height: "12rem", background: "mediumpurple" }} className="d-flex justify-content-center align-items-center">
+        const articleImage = <Card.Img src={imageURL} className="mb-2" style={{borderRadius: "15px" }} />;
+        const placeholderImage = <div style={{ width: "100%", height: "12rem", background: "mediumpurple", borderRadius: "15px" }} className="d-flex justify-content-center align-items-center mb-2">
             <FaRegNewspaper style={{ width: '3rem', height: '3rem', textDecoration: 'none' }} />
         </div>
         return (
-            <Card key={i}>
+            <div key={i} className="newsWidgetCard p-3">
                 {imageURL ? articleImage : placeholderImage}
                 <Card.Body>
-                    <Card.Title>
-                        <a href={articleURL}>
+                    <Card.Title className="mb-2">
+                        <a href={articleURL} >
                             {headline}
                         </a>
                     </Card.Title>
-                    <Card.Text>
+                    <Card.Text className="mb-2">
                         {description}
                     </Card.Text>
                     <Card.Text>
-                        <small className="text-muted"><img src={sourceIconURL} style={{ width: "1.5rem" }} /> &nbsp;{source}</small>
+                        <small><img src={sourceIconURL} style={{ width: "1.5rem" }} /> &nbsp;{source}</small>
                     </Card.Text>
                 </Card.Body>
-            </Card>
+            </div>
         )
-
-
     })
 
     return (
-        <ResponsiveMasonry
-            columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 4 }} 
-            className="mt-3">
-            <Masonry gutter="15px">
-                {resultsArray}
-            </Masonry>
-        </ResponsiveMasonry>
+        <div className="mt-3 glassCard">
+            <ResponsiveMasonry
+                columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 4 }}
+                >
+                <Masonry gutter="15px" >
+                    {resultsArray}
+                </Masonry>
+            
+            </ResponsiveMasonry>
+            <div className='d-flex justify-content-center pt-3'>
+            {props.searchType == "news/search" && props.searchResults ? <button className='loadMoreButton' onClick={props.loadMoreNews}>Load More</button> : ""}
+            </div>
+        </div>
     )
 }
 

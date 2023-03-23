@@ -48,7 +48,7 @@ const NewsWidget = () => {
         },
         headers: {
           'X-BingApis-SDK': 'true',
-          'X-RapidAPI-Key': '31da255736msh936614cca1dd1acp1c7e31jsn7de1029aaaaf',
+          'X-RapidAPI-Key': 'ca3e3b7c4dmshcf0d18644a9b128p15b157jsnca8487f0f2a9',
           'X-RapidAPI-Host': 'bing-news-search1.p.rapidapi.com'
         }
       };
@@ -56,6 +56,7 @@ const NewsWidget = () => {
       axios.request(options)
         .then(function (response) {
           setSearchResults(response.data.value);
+          console.log(response.data.value);
         })
         .catch(function (error) {
           apiCallFail(error);
@@ -101,9 +102,8 @@ const NewsWidget = () => {
   };
 
   return (
-    <div>
-      <div className='glassCard'>
-        <Card.Body>
+      <div className='glassCard h-100'>
+        <Card.Body className='h-100 d-flex flex-column'>
           <Card.Title>Todays Tech News</Card.Title>
           <NewsSearchBar
             value={searchString}
@@ -123,7 +123,6 @@ const NewsWidget = () => {
             />}
         </Card.Body>
       </div>
-    </div>
   );
 };
 

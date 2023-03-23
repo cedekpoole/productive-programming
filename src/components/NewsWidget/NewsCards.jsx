@@ -40,7 +40,7 @@ function NewsCards(props) {
         <div className='newsScrollWrapper'>
             {resultsArray}
             <div className='d-flex justify-content-center pt-3'>
-                <Button variant="primary" onClick={props.loadMoreNews}>Load More</Button>
+            <button className="loadMoreButton" onClick={props.loadMoreNews}>Load More</button>
             </div>
 
         </div>
