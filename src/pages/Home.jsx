@@ -5,7 +5,7 @@ import TimerWidget from '../components/TimerWidget'
 import WeatherWidget from '../components/WeatherWidget'
 import { Container, Row, Col } from 'react-bootstrap'
 import ToDoWidget from '../components/ToDoComponents/ToDoWidget'
-import CalendarWidget from '../components/CalendarWidget'
+import CalendarWidget from '../components/CurrentTimeWidget'
 
 
 function Home() {
