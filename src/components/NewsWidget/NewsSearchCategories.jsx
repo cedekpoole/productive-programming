@@ -17,7 +17,7 @@ function NewsSearchCategories(props) {
                     style={{ border: "0px" }}
                     value={category.name}
                     onClick={props.handleCategorySearch}>
-                    {category.name}
+                    {category.name}&nbsp;{category.icon}
                 </button>
                 </div>
             ))}

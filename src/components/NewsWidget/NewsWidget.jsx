@@ -56,7 +56,6 @@ const NewsWidget = () => {
       axios.request(options)
         .then(function (response) {
           setSearchResults(response.data.value);
-          console.log(response.data.value);
         })
         .catch(function (error) {
           apiCallFail(error);
