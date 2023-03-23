@@ -4,21 +4,22 @@ function NewsSearchCategories(props) {
 
 
 
-    
+
     return (
 
-        <div className="row">
+        <div className="row g-2">
             {props.categoryList.map((category, i) =>
             (
+                <div key={i} className='col-12 col-md-6 col-lg-3'>
                 <button 
                     key={i}
-                    variant={category.name == props.category ? "success" : "primary"}
+                    className={category.name == props.category ? "categoryButtonActive" : "categoryButton"}
                     style={{ border: "0px" }}
-                    className="my-1 categoryButton"
                     value={category.name}
                     onClick={props.handleCategorySearch}>
                     {category.name}
                 </button>
+                </div>
             ))}
         </div>
     )

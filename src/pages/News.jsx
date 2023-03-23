@@ -132,6 +132,7 @@ const News = () => {
 
                 {searchResults && searchResults.length > 1 ?
                     <NewsPageCards searchResults={searchResults}
+                        searchType={searchType}
                         loadMoreNews={loadMoreNews} /> :
                     <Row style={{ height: "50vh" }} className='d-flex justify-content-center align-items-center py-3'>
                         <Col className='card' sm={12} md={8} >

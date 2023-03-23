@@ -48,7 +48,7 @@ function NewsPageCards(props) {
             
             </ResponsiveMasonry>
             <div className='d-flex justify-content-center pt-3'>
-                <button className='loadMoreButton' onClick={props.loadMoreNews}>Load More</button>
+            {props.searchType == "news/search" && props.searchResults ? <button className='loadMoreButton' onClick={props.loadMoreNews}>Load More</button> : ""}
             </div>
         </div>
     )
