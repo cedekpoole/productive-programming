@@ -35,6 +35,7 @@ const WeatherWidget = () => {
             axios.get(urlForecast)
           ]);
         })
+        // If the response is correct and contains data then set WeatherData and ForecastData
         .then(([weatherResponse, forecastResponse]) => {
           if (weatherResponse.data && weatherResponse.data.main) {
             setWeatherData(weatherResponse.data);
@@ -54,6 +55,7 @@ const WeatherWidget = () => {
     }
   }, [apiFailCounter]);
 
+  // Generates the top row of the weatherwidget containing todays forecast
   function generateTodayForecast() {
     const city = weatherData.name;
     const countryCode = weatherData.sys.country;
@@ -72,6 +74,7 @@ const WeatherWidget = () => {
     );
   };
 
+  // Generates the bottom row of the weatherwidget containing a 5day forecast
   function generate5DayForecast() {
     const dateIndex = [4, 12, 20, 28, 36];
     const forecastArray = dateIndex.map((dateIndex, i) => {
@@ -88,7 +91,7 @@ const WeatherWidget = () => {
         </Col>
       )
     });
-    
+
     return (
       <Row className='d-flex flex-nowrap'>
         {forecastArray}
@@ -96,17 +99,19 @@ const WeatherWidget = () => {
     );
   };
 
+  // Changes the title of the widget to include the location
   function generateWidgetTitle() {
     const city = weatherData.name;
     const countryCode = weatherData.sys.country;
 
     return (
       <div className='d-flex justify-content-between'>
-      <Card.Title>Today's Weather</Card.Title><div>{`${city}, ${countryCode}`}&nbsp;<IoLocationSharp /></div>
+        <Card.Title>Today's Weather</Card.Title><div>{`${city}, ${countryCode}`}&nbsp;<IoLocationSharp /></div>
       </div>
     )
   }
 
+  // Displays an error message when api call fails
   function displayError() {
     return (
       <Col className='p-4'>
@@ -116,6 +121,7 @@ const WeatherWidget = () => {
     )
   };
 
+  // Displays a spinner whilst content is loading
   function displaySpinner() {
     return (
       <Col className='p-4 d-flex justify-content-center'>
@@ -124,6 +130,7 @@ const WeatherWidget = () => {
     )
   };
 
+  // Checks if the api call has failed more than 3 times, if so render error message
   function loadContent() {
     if (apiFailCounter >= 3) {
       return displayError();
@@ -133,6 +140,7 @@ const WeatherWidget = () => {
     }
   };
 
+  // Generates the daily and 5 day forecast as one div
   function generateWeather() {
     return (
       <div>
@@ -142,13 +150,14 @@ const WeatherWidget = () => {
     )
   };
 
+  // Returns weather widget
   return (
     <div>
       <div className='glassCard text-dark' >
         <Card.Body>
-          
+
           {weatherData && weatherData.main ? generateWidgetTitle() : <Card.Title>Today's Weather</Card.Title>}
-          
+
           {weatherData && weatherData.main ? generateWeather() : loadContent()}
         </Card.Body>
       </div>
