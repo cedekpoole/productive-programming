@@ -5,7 +5,7 @@
 Link to deployed site: https://productive-programming.netlify.app 
 
 ## Description 
-Welcome potential users! Productive programming is a single page application for developers and students. It includes features such as a current weather widget, a search function for Stack Overflow, a Pomodoro timer, a notes section, and programming news.
+Welcome to the repo!  Productive programming is a single page application for developers and students. It includes features such as a current and forecasted weather widget, programming news, a search function for Stack Overflow, a Pomodoro timer and the ability to add and save notes and todos. 
 
 
 This project was a collaborative venture (contributors listed below). As a team, we practiced agile development where our first objective was to create a MVP (minimum viable product). This entailed the implementation of core features - in addition to the elimination of any overarching bugs - in order to get a working version of the app. At this point in time, the aesthetic of the overall site was not our primary concern. While following agile principles, it was of crucial importance to have an early version up and running prior to the implementation of additional features. Soon after, we created a colour scheme and styled the page to fit the theme that we were aiming for. The final step was adding supplementary functionality to the page.
@@ -19,7 +19,8 @@ This project was a collaborative venture (contributors listed below). As a team,
 
 ### User Story: 
 
-As a student, I need a productivity homepage that allows me to easily access important information such as weather updates, programming news, and a timer for effective time management, so that I can stay focused and productive while working on my projects.
+As a student/developer, I need a productivity dashboard that allows me to easily access important information such as weather updates, programming news, a timer for effective time management and the ability to add and save notes and todos!
+Perfect for people who want to stay focused and be productive while working on projects. 
 
 ### Acceptance Criteria: 
 - Application uses React.js
@@ -38,6 +39,13 @@ N/A - Application has been deployed on Netlify
 
 ### Users
 Go to the [deployed site](https://productive-programming.netlify.app) on Netlify. 
+
+Transverse around each of the pages and try out all the different features. 
+![Home Page](./src/assets/images/homepage.png)
+![News Page](./src/assets/images/newspage.png)
+![Notes Page](./src/assets/images/notespage.png)
+![Study Page](./src/assets/images/studypage.png)
+![Stack Overflow Page](./src/assets/images/stackoverflowpage.png)
 
 ### Developers
 1. Navigate to the main page of the repository
