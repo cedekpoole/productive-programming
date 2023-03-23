@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Container, Card, Button, Row, Col } from 'react-bootstrap';
+import { FaBriefcase, FaStar, FaCommentMedical, FaUserTie, FaVolleyballBall, FaMapMarkedAlt, FaGlobeEurope, FaAtom } from "react-icons/fa";
 import axios from 'axios';
 import '../components/NewsWidget/newsPage.css';
 import NewsPageCards from '../components/NewsWidget/NewsPageCards';
@@ -19,14 +20,14 @@ const News = () => {
     const [pageTitle, setPageTitle] = useState("Tech & Coding");
 
     const categoryList = [
-        { name: 'Business' },
-        { name: 'Entertainment' },
-        { name: 'Health' },
-        { name: 'Politics' },
-        { name: 'Sports' },
-        { name: 'UK' },
-        { name: 'World' },
-        { name: 'ScienceAndTechnology' },
+        { name: 'Business', icon: <FaBriefcase /> },
+        { name: 'Entertainment', icon: <FaStar /> },
+        { name: 'Health', icon: <FaCommentMedical />},
+        { name: 'Politics', icon: <FaUserTie />},
+        { name: 'Sports', icon: <FaVolleyballBall />},
+        { name: 'UK', icon: <FaMapMarkedAlt />},
+        { name: 'World', icon: <FaGlobeEurope />},
+        { name: 'ScienceAndTechnology', icon: <FaAtom />},
     ];
 
     const apiCallFail = () => {
@@ -135,7 +136,7 @@ const News = () => {
                         searchType={searchType}
                         loadMoreNews={loadMoreNews} /> :
                     <Row style={{ height: "50vh" }} className='d-flex justify-content-center align-items-center py-3'>
-                        <Col className='card' sm={12} md={8} >
+                        <Col className='glassCard' sm={12} md={8} >
                             < NewsPlaceholder apiFailCounter={apiFailCounter} />
                         </Col>
                     </Row>

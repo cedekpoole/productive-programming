@@ -9,7 +9,7 @@ function NewsSearchBar(props) {
                         id="search"
                         name="search"
                         type="text"
-                        className="form-control"
+                        className="searchBar"
                         placeholder="Search News"
                         onChange={props.handleInputChange}
                         onKeyDown={props.handleKeyDown}

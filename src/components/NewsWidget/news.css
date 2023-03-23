@@ -90,6 +90,14 @@ text-decoration: none;
   background-color: rgba(132, 101, 255, 0.7);
 }
 
+.searchBar {
+  border-radius: 4px 0 0 4px;
+  padding: 6px 32px 6px 16px;
+  border: 2px solid #6444e3;
+  outline: none;
+  flex-grow: 1;
+}
+
 /* .content {
     position: absolute;
     width: 100%;
