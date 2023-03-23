@@ -16,7 +16,7 @@ const StackOverflow = () => {
   useEffect(() => {
     axios
       .get(
-        // `https://api.stackexchange.com/2.3/questions?fromdate=${date}&order=desc&sort=hot&tagged=react&site=stackoverflow`
+        `https://api.stackexchange.com/2.3/questions?fromdate=${date}&order=desc&sort=hot&tagged=react&site=stackoverflow`
       )
       .then((response) => {
         setData(response.data.items);
@@ -29,7 +29,7 @@ const StackOverflow = () => {
   useEffect(() => {
     axios
       .get(
-        // "https://api.stackexchange.com/2.3/questions?order=desc&sort=week&tagged=javascript;reactjs&site=stackoverflow"
+        "https://api.stackexchange.com/2.3/questions?order=desc&sort=week&tagged=javascript;reactjs&site=stackoverflow"
       )
       .then((res) => {
         setData2(res.data.items);
@@ -63,10 +63,13 @@ const StackOverflow = () => {
           </div>
         </Col>
         <Col xl={6}>
-          <StackOverflowWidget />
-          <div className="glass p-3 mt-2 mb-3">
+          <div className="h-50">
+            <StackOverflowWidget />
+          </div>
+          <div className="h-50 d-flex flex-column">
+          <div className="glass flex-grow-1 d-flex flex-column p-3 mt-2 mb-3">
             <h3 className="p-2 mb-3 text-dark">Hot React.js Questions</h3>
-            <div style={{ height: "250px", overflowY: "scroll" }}>
+            <div className="newsScrollWrapper" style={{ height: "250px", overflowY: "scroll" }}>
               {data.map((element, index) => (
                 <StackCard
                   votes={element.score}
@@ -81,6 +84,7 @@ const StackOverflow = () => {
                 />
               ))}
             </div>
+          </div>
           </div>
         </Col>
       </Row>

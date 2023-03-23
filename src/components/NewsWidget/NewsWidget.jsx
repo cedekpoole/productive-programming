@@ -55,7 +55,11 @@ const NewsWidget = () => {
 
       axios.request(options)
         .then(function (response) {
-          setSearchResults(response.data.value);
+          if (searchResultsPage > 0) {
+            setSearchResults(searchResults.concat(response.data.value));
+          } else {
+            setSearchResults(response.data.value);
+          }
         })
         .catch(function (error) {
           apiCallFail(error);
@@ -64,7 +68,7 @@ const NewsWidget = () => {
   }, [searchResultsPage, category, queryString, apiFailCounter]);
 
   function loadMoreNews() {
-    setSearchResultsPage(searchResultsPage + 10);
+    setSearchResultsPage(searchResultsPage + 12);
   }
 
   function searchKeywords(query) {
@@ -101,27 +105,27 @@ const NewsWidget = () => {
   };
 
   return (
-      <div className='glassCard h-100'>
-        <Card.Body className='h-100 d-flex flex-column'>
-          <Card.Title>Todays Tech News</Card.Title>
-          <NewsSearchBar
-            value={searchString}
-            category={category}
-            categoryList={categoryList}
-            handleInputChange={handleInputChange}
-            handleFormSubmit={handleFormSubmit}
-            handleKeyDown={handleKeyDown}
-            handleCategorySearch={handleCategorySearch}
-          />
-          {searchResults && searchResults.length > 1 ?
-            <NewsCards
-              searchResults={searchResults}
-              loadMoreNews={loadMoreNews} /> :
-            <NewsPlaceholder
-              apiFailCounter={apiFailCounter}
-            />}
-        </Card.Body>
-      </div>
+    <div className='glassCard h-100'>
+      <Card.Body className='h-100 d-flex flex-column'>
+        <Card.Title>Todays Tech News</Card.Title>
+        <NewsSearchBar
+          value={searchString}
+          category={category}
+          categoryList={categoryList}
+          handleInputChange={handleInputChange}
+          handleFormSubmit={handleFormSubmit}
+          handleKeyDown={handleKeyDown}
+          handleCategorySearch={handleCategorySearch}
+        />
+        {searchResults && searchResults.length > 1 ?
+          <NewsCards
+            searchResults={searchResults}
+            loadMoreNews={loadMoreNews} /> :
+          <NewsPlaceholder
+            apiFailCounter={apiFailCounter}
+          />}
+      </Card.Body>
+    </div>
   );
 };
 

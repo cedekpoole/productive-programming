@@ -1,5 +1,6 @@
 import DeleteForeverOutlinedIcon from "@mui/icons-material/DeleteForeverOutlined";
 
+// Note element used for all notes
 function Note({ id, text, deleteNote }) {
   return (
     <div className="note">
