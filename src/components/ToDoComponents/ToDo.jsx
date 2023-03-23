@@ -6,11 +6,13 @@ import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 
 const ToDo = ({ todos, updateTodo, removeTodo, completeTodo }) => {
 
+    // set initial state to object with no values
     const [edit, setEdit] = useState({
         id: null,
         value: ''
     });
 
+    // clear values in input field to update
     const submitUpdate = value => {
         updateTodo(edit.id, value);
         setEdit({
@@ -19,6 +21,7 @@ const ToDo = ({ todos, updateTodo, removeTodo, completeTodo }) => {
         });
     };
 
+    // conditional rendering of form based on edit state id
     if (edit.id) {
         return <ToDoForm edit={edit} onSubmit={submitUpdate} />;
     }

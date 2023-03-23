@@ -1,21 +1,19 @@
-import LinearProgress from "@mui/material/LinearProgress";
 import { useState } from 'react';
 import { v4 as uuid } from "uuid";
 
 function CreateNote({ saveHandler }) {
 
+  // set states
   const [inputText, setInputText] = useState("");
   const [saveMessage, setSaveMessage] = useState("");
   const [showSaveMessage, setShowSaveMessage] = useState(false);
 
-  //   //character limit
-  //   const charLimit = 100;
-  //   const charLeft = charLimit - inputText.length;
-
+  // set inputText to input value
   const textHandler = (e) => {
     setInputText(e.target.value);
   };
 
+  // function to save note with id and text
   const handleSave = () => {
     const newNote = {
       id: uuid(),
@@ -24,6 +22,7 @@ function CreateNote({ saveHandler }) {
     saveHandler(newNote);
     setInputText("");
     setSaveMessage("Note saved");
+    // show 'save message'
     setShowSaveMessage(true);
     setTimeout(() => {
       setShowSaveMessage(false);
@@ -42,17 +41,12 @@ function CreateNote({ saveHandler }) {
         maxLength="100"
       ></textarea>
       <div className="note__footer">
-        {/* <span className="label">{charLeft} characters left</span> */}
+        {/* if note 'saved' add 'show' class */}
         {saveMessage && <div className={`note__message ${showSaveMessage ? "show" : ""}`}>{saveMessage}</div>}
         <button className="note__save" onClick={handleSave}>
           Save
         </button>
       </div>
-      {/* <LinearProgress
-        className="char__progress"
-        variant="determinate"
-        value={charLeft}
-      /> */}
     </div>
   );
 }

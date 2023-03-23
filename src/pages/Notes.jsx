@@ -21,6 +21,7 @@ function Notes() {
         setInputText(e.target.value);
     };
 
+    // for each new note add id and text value
     const notesSaveHandler = () => {
         const newNote = {
             id: uuid(),
@@ -36,11 +37,14 @@ function Notes() {
         setInputText("");
     };
 
+    // function to search notes
     const handleSearchNote = (searchText) => {
         setSearchText(searchText);
 
+        // if no search term, show all notes
         if (!searchText) {
             setFilteredNotes(notes);
+        // for search term filter notes to show all with search value
         } else {
             const filtered = notes.filter((note) =>
             note.text.toLowerCase().includes(searchText.toLowerCase())
@@ -54,17 +58,21 @@ function Notes() {
     const deleteNote = (id) => {
         const filteredNotes = notes.filter((note) => note.id !== id);
         setNotes(filteredNotes);
+        // re-set notes to not show deleted
         localStorage.setItem("notes", JSON.stringify(filteredNotes));
     };
 
+    // retrieve notes from local storage, set as initial state, run once
     useEffect(() => {
         const storedNotes = JSON.parse(localStorage.getItem("notes")) || [];
         setNotes(storedNotes);
         setFilteredNotes(storedNotes);
     }, []);
 
+    // update filteredNotes state whenever state changes
     useEffect(() => {
         setFilteredNotes(notes);
+        // only run when state changes
     }, [notes]);
 
     return (
