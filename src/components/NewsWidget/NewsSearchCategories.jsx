@@ -1,20 +1,24 @@
 import { Button, Badge, Form } from 'react-bootstrap';
 
 function NewsSearchCategories(props) {
+
+
+
+    
     return (
 
-        <div className="d-flex justify-content-evenly flex-wrap py-2">
+        <div className="row">
             {props.categoryList.map((category, i) =>
             (
-                <Button 
+                <button 
                     key={i}
                     variant={category.name == props.category ? "success" : "primary"}
                     style={{ border: "0px" }}
-                    className="my-1"
+                    className="my-1 categoryButton"
                     value={category.name}
                     onClick={props.handleCategorySearch}>
                     {category.name}
-                </Button>
+                </button>
             ))}
         </div>
     )

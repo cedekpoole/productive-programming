@@ -61,10 +61,15 @@
   color: white;
 }
 
-.searchButton {
+.newsWidgetCard a {
+color: white;
+text-decoration: none;
+}
+
+.searchButton, .loadMoreButton, .categoryButton {
   padding: 8px;
   border: none;
-  border-radius: 0 4px 4px 0;
+  border-radius: 4px;
   cursor: pointer;
   outline: none;
   background-color: rgb(56 20 195 / 70%);
@@ -73,18 +78,13 @@
   transition: 1s ease-in-out;
 }
 
-.loadMoreButton {
-  padding: 8px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  outline: none;
-  background-color: rgba(56 20 195 / 70%);
-  color: white;
-  min-width: 100px;
-  transition: 1s ease-in-out;
+.searchButton{
+  border-radius: 0 4px 4px 0;
 }
 
+.categoryButton {
+  width: 100%;
+}
 /* .content {
     position: absolute;
     width: 100%;
