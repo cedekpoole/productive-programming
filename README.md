@@ -73,10 +73,10 @@ Steps:
 ## Credits 
 
 - [C4rli](https://github.com/c4rli)
-    - Implemented the current and forecasted weather widget on the home page
-    - Created news section with search functionality via the input field, allowing the user to effortlessly look up a variety of news articles 
-    - Used said news functionality to create a separate news page - can search up news categories to view top stories in for that particular section
-    - Created the favicon for the page
+    - Implemented API call that generates a location for the user based on their IP address.
+    - Chained the location API call with OpenWeather API to generate the current and forecasted weather widget on the home page.
+    - Created news widget with search functionality to return articles based on the user's search string. 
+    - Created a larger news page with more functionality, allowing the user to effortlessly look up a variety of news articles by search string or category.
     - General refactoring of the code base
 
 - [bethanyryalls](https://github.com/bethanyryalls)
