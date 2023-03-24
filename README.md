@@ -93,6 +93,7 @@ Steps:
     - Created a stack overflow widget that allows the user to search up questions relevant to their search query
     - Created a separate stack overflow page (also showing hot React.js questions for that particular day in addition to top questions of the week ofr easy user access)
     - Implemented a study page with functionality that would aid in keeping the user focused (e.g. Pomodoro timer, inspirational quote, music, astronomy picture of the day)
+    - Wrote up the README.md for the repository
     - General refactoring of the code base
 
 ---
