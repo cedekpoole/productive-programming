@@ -80,6 +80,7 @@ text-decoration: none;
 
 .searchButton{
   border-radius: 0 4px 4px 0;
+  min-width: 0;
 }
 
 .categoryButton, .categoryButtonActive {
